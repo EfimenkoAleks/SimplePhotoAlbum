@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         self.viewModel.delegate = self
-        self.view.backgroundColor = .systemRed
+        self.view.backgroundColor = .systemPink
     }
 
 }
