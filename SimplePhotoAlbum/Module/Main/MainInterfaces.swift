@@ -12,8 +12,13 @@ protocol MainViewModelInputProtocol: class {}
 protocol MainViewModelOutputProtocol: class {
     var delegate: MainViewModelDelegate? { set get }
     var countItem: Int { get }
-    func itemForCollection(index: Int) -> ListPhotos
-    func searchPhoto(pageNumber: Int, search: String)
+    var searchCountItem: Int { get }
+    func itemForCollection(index: Int) -> String
+    func searchItemForCollection(index: Int) -> String
+    func listPhoto() 
+    func searchListPhoto()
+    func goListPhoto()
+    func filterContentForSearchText(_ searchText: String)
 }
 
 protocol MainViewModelProtocol: MainViewModelInputProtocol, MainViewModelOutputProtocol {}
