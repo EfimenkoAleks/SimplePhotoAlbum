@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     var viewModel: MainViewModelProtocol!
+    private var pageNamber = 1
  
     @IBOutlet weak var collection: UICollectionView! {
         didSet {
@@ -40,7 +41,21 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: UICollectionViewDelegate {}
+extension MainViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == self.viewModel.countItem - 5 {
+            self.pageNamber += 1
+            self.viewModel.searchPhoto(pageNumber: self.pageNamber, search: "office")
+            print("\(self.pageNamber)")
+        }
+//            self.photocollection?.scrollToItem(at: IndexPath(item: gIndexForCollection, section: 0), at: .top, animated: false)
+//            gWillDisplay = false
+        
+      
+    }
+}
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -52,7 +67,7 @@ extension MainViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueCell(withType: MainCollectionViewCell.self, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
         
         let model = self.viewModel.itemForCollection(index: indexPath.item)
-        cell.configur(model: model)
+        cell.configur(model: model.urls?.small)
         return cell
     }
 }

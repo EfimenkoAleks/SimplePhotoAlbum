@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ImageService {
-    func downloadImage(_ url: String, result: @escaping ((Data?) -> Void))
+    func downloadImage(_ url: URL, result: @escaping ((Data?) -> Void))
 }

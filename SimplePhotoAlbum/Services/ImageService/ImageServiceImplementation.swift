@@ -38,16 +38,15 @@ class ImageServiceImplementation {
 
 extension ImageServiceImplementation: ImageService {
     
-     func downloadImage(_ url: String, result: @escaping ((Data?) -> Void)) {
+     func downloadImage(_ url: URL, result: @escaping ((Data?) -> Void)) {
         
-        let fileName = URL(string: url)?.lastPathComponent ?? url
+        let fileName = url.lastPathComponent
         if self.loadImageFromDiskWith(fileName: fileName) != nil {
             result(self.loadImageFromDiskWith(fileName: fileName)!)
             return
         }
         
-        let url = URL(string: url)
-        let request = URLRequest(url: url!)
+        let request = URLRequest(url: url)
         let task = self.session.dataTask(with: request) { (data, response, error) in
             if error == nil {
                 guard let data = data else {
