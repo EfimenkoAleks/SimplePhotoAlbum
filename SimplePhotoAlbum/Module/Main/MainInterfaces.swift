@@ -18,12 +18,15 @@ protocol MainViewModelOutputProtocol: class {
     func listPhoto() 
     func searchListPhoto()
     func goListPhoto()
+    func routTodetail(model: String)
     func filterContentForSearchText(_ searchText: String)
 }
 
 protocol MainViewModelProtocol: MainViewModelInputProtocol, MainViewModelOutputProtocol {}
 
-protocol MainRouterProtocol: class {}
+protocol MainRouterProtocol: class {
+    func routToDetail(model: String)
+}
 
 protocol MainViewModelDelegate: class {
     func didFetchingData()
