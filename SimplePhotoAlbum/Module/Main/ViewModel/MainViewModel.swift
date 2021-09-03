@@ -97,4 +97,8 @@ extension MainViewModel: MainViewModelProtocol {
             }
         }
     }
+    
+    func routTodetail(model: String) {
+        self.router.routToDetail(model: model)
+    }
 }

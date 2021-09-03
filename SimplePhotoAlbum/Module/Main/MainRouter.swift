@@ -13,4 +13,9 @@ class MainRouter {
 
 extension MainRouter: MainRouterProtocol {
     
+    func routToDetail(model: String) {
+        
+        let view = DetailWireFrame.create(model: model)
+        self.controller?.navigationController?.pushViewController(view, animated: true)
+    }
 }

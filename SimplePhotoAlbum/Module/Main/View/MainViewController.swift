@@ -73,7 +73,16 @@ extension MainViewController: UICollectionViewDelegate {
 //            self.photocollection?.scrollToItem(at: IndexPath(item: gIndexForCollection, section: 0), at: .top, animated: false)
 //            gWillDisplay = false
         
-      
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var model = ""
+        if isFiltering {
+            model = self.viewModel.searchItemForCollection(index: indexPath.item)
+        } else {
+            model = self.viewModel.itemForCollection(index: indexPath.item)
+        }
+        self.viewModel.routTodetail(model: model)
     }
 }
 
