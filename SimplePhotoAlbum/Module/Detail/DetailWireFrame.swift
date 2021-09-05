@@ -10,10 +10,8 @@ import UIKit
 class DetailWireFrame {
     static func create(model: URL?) -> UIViewController {
         let view = DetailViewController()
-        let router = DetailRouter()
-        let viewModel = DetailViewModel(router: router, url: model)
+        let viewModel = DetailViewModel(url: model)
         view.viewModel = viewModel
-        router.controller = view
         
         return view
     }

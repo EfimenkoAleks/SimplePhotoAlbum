@@ -5,8 +5,6 @@
 //  Created by user on 03.09.2021.
 //
 
-import Foundation
-
 import UIKit
 
 class ImageScrollView: UIScrollView, UIScrollViewDelegate {
@@ -31,15 +29,13 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     func set(image: UIImage) {
         imageZoomView?.removeFromSuperview()
         imageZoomView = nil
-        
+
         imageZoomView = UIImageView(image: image)
         self.addSubview(imageZoomView)
-        
+
         configurateFor(imageSize: image.size)
     }
     
@@ -66,7 +62,7 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
         let yScale = boundsSize.height / imageSize.height
         let minScale = min(xScale, yScale)
         
-        var maxScale: CGFloat = 1.0
+        var maxScale: CGFloat = 4.0
         if minScale < 0.1 {
             maxScale = 0.3
         }
@@ -74,7 +70,7 @@ class ImageScrollView: UIScrollView, UIScrollViewDelegate {
             maxScale = 0.7
         }
         if minScale >= 0.5 {
-            maxScale = max(1.0, minScale)
+            maxScale = max(4.0, minScale)
         }
         
         self.minimumZoomScale = minScale
