@@ -56,12 +56,12 @@ class DetailViewController: UIViewController {
         viewScroll?.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
-    private func setupScroll(image: String) {
+    private func setupScroll(image: Data) {
         self.viewScroll = ImageScrollView(frame: self.view.bounds)
         self.view.addSubview(self.viewScroll!)
         self.addViewScroll()
-        
-        self.viewScroll?.set(image: UIImage(named: image)!)
+        guard let image = UIImage(data: image) else { return }
+        self.viewScroll?.set(image: image)
        
             self.loadIndikator.stopAnimating()
             self.loadIndikator.removeFromSuperview()
@@ -70,7 +70,8 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewModelDelegate {
-    func didDownloadPhoto(image: String) {
+    
+    func didDownloadPhoto(image: Data) {
         self.setupScroll(image: image)
     }
 }
