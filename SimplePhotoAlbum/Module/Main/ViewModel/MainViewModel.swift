@@ -11,10 +11,7 @@ class MainViewModel {
     private var router: MainRouterProtocol
     weak var delegate: MainViewModelDelegate?
     private var photos: [ListPhotos]
-    private var searchPhotos: [ListPhotos]
-    //    private var testArray: [String]
     private var images: [ImageModel]
-    private var searchImages: [Data]
     private var dataSource: [ListPhotos]
     private let service: APIService
     private let imageService: ImageService
@@ -27,16 +24,12 @@ class MainViewModel {
     ) {
         self.router = router
         self.photos = []
-        self.searchPhotos = []
         self.numberPage = 0
         self.searchText = ""
         self.images = []
-        self.searchImages = []
         self.dataSource = []
         self.imageService = imageService
         self.service = service
-        //       self.testArray = ["lis", "minon", "lilo", "lis", "minon", "lilo", "lis", "minon", "lilo", "lis", "minon", "lilo", "lis", "minon", "lilo", "lis", "minon", "lilo", "lis", "minon"]
-        
         self.preload()
     }
     
@@ -51,12 +44,10 @@ extension MainViewModel: MainViewModelProtocol {
        let url = self.images[index].url
         let sort = self.dataSource.filter({$0.urls?.small == url})
         return sort.first?.urls?.full
-        //    return self.photos[index]
     }
     
     func itemForCollection(index: Int) -> ImageModel {
         return self.images[index]
-        //        return self.testArray[index]
     }
     
     func reloadDataSource() {
@@ -65,31 +56,7 @@ extension MainViewModel: MainViewModelProtocol {
         self.numberPage = 0
         self.delegate?.didFetchingData()
     }
-    
-//    func loadPhoto(index: Int) {
-//        let urlsImage = self.dataSource.compactMap({$0.urls?.small})
-//
-////        if index == urlsImage.count - 1 {
-////            return
-////        }
-//        self.imageService.downloadImage(urlsImage[index]) { (rezult) in
-//            guard let data = rezult else { return }
-//            self.images.append(data)
-//
-//            DispatchQueue.main.async {
-//                self.delegate?.didFetchingData()
-//            }
-//        }
-//    }
-    
-//    func searchLoadPhoto(index: Int) {
-//        let urlsImage = self.dataSource.compactMap({$0.urls?.small})
-//        self.imageService.downloadImage(urlsImage[index]) { (rezult) in
-//            guard let data = rezult else { return }
-//            self.images.append(data)
-//        }
-//    }
-    
+
     func listPhoto() {
         self.numberPage += 1
         

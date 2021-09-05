@@ -11,65 +11,65 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewModelProtocol!
     
-//    private let searchController = UISearchController(searchResultsController: nil)
-//    private var searchBarIsEmpty: Bool {
-//            guard let text = searchController.searchBar.text else { return false }
-//            return text.isEmpty
-//        }
-//    private var isFiltering: Bool {
-//            return searchController.isActive && !searchBarIsEmpty
-//        }
-    
     private var isFiltering: Bool = false
     private var textFild: UITextField?
- 
+    
+    @IBOutlet weak var containerView: UIView!
+    
     @IBOutlet weak var collection: UICollectionView! {
         didSet {
             collection.registerCell(type: MainCollectionViewCell.self)
-            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
- //           layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            let width: CGFloat = (UIScreen.main.bounds.width / 2) - 1
-            let aspectRatio: CGFloat = 0.75 //9 / 12
-            let height = (width * aspectRatio) + 25
-            layout.itemSize = CGSize(width: width, height: height)
-            layout.minimumLineSpacing = 2
-            layout.minimumInteritemSpacing = 2
-            
+            let layout = PortraitLayout()
             collection.collectionViewLayout = layout
             collection.backgroundColor = .black
-           
+            
             collection.delegate = self
             collection.dataSource = self
-            collection.prefetchDataSource = self
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
- //       self.createSearchController()
+        
         self.viewModel.delegate = self
-        self.view.backgroundColor = .systemPink
+        self.view.backgroundColor = .black
+        createSearchController()
     }
     
-    override func viewWillLayoutSubviews() {
-        createSearchController()
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { [unowned self] _ in
+            if newCollection.verticalSizeClass == .compact {
+                collection.collectionViewLayout = LandscapeLayout()
+                
+            } else {
+                collection.collectionViewLayout = PortraitLayout()
+                
+            }
+        }) { [unowned self] _ in
+            collection.collectionViewLayout.invalidateLayout()
+            collection.layoutIfNeeded()
+        }
     }
     
     private func createSearchController() {
         
         let viewContent = UIView()
-        viewContent.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.3)
+        viewContent.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).withAlphaComponent(0.5)
         viewContent.layer.cornerRadius = 5
         viewContent.layer.masksToBounds = true
-        guard let navBar = self.navigationController?.navigationBar else { return }
         viewContent.translatesAutoresizingMaskIntoConstraints = false
-        navBar.addSubview(viewContent)
+        self.containerView.addSubview(viewContent)
         NSLayoutConstraint.activate([
-            viewContent.centerXAnchor.constraint(equalTo: navBar.centerXAnchor),
-            viewContent.bottomAnchor.constraint(equalTo: navBar.bottomAnchor, constant: -5),
-            viewContent.leadingAnchor.constraint(equalTo: navBar.leadingAnchor, constant: 30),
-            viewContent.trailingAnchor.constraint(equalTo: navBar.trailingAnchor, constant: -30),
+            viewContent.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            viewContent.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            viewContent.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            viewContent.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
             viewContent.heightAnchor.constraint(equalToConstant: 40)
         ])
         textFild = UITextField()
@@ -80,8 +80,8 @@ class MainViewController: UIViewController {
         viewContent.addSubview(textF)
         NSLayoutConstraint.activate([
             textF.centerYAnchor.constraint(equalTo: viewContent.centerYAnchor),
-            textF.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor,constant: 8),
-            textF.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -100),
+            textF.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor,constant: 16),
+            textF.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -116),
             textF.heightAnchor.constraint(equalToConstant: 40)
         ])
         let buttonSearch = UIButton()
@@ -95,14 +95,16 @@ class MainViewController: UIViewController {
         viewContent.addSubview(buttonSearch)
         NSLayoutConstraint.activate([
             buttonSearch.centerYAnchor.constraint(equalTo: viewContent.centerYAnchor),
-            buttonSearch.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor),
+            buttonSearch.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),
             buttonSearch.heightAnchor.constraint(equalToConstant: 40),
             buttonSearch.widthAnchor.constraint(equalToConstant: 60)
         ])
         let buttonDelete = UIButton()
         buttonDelete.layer.cornerRadius = 10
         buttonDelete.layer.masksToBounds = true
-        let image = UIImage(systemName: "delete.left")?.withRenderingMode(.alwaysTemplate)
+       
+        let scaleConfig = UIImage.SymbolConfiguration(scale: .small)
+        let image = UIImage(systemName: "clear", withConfiguration: scaleConfig)?.withRenderingMode(.alwaysTemplate)
         buttonDelete.setBackgroundImage(image, for: .normal)
         buttonDelete.tintColor = .black
         buttonDelete.addTarget(self, action: #selector(MainViewController.deleteAction), for: .touchUpInside)
@@ -124,10 +126,8 @@ class MainViewController: UIViewController {
     }
     
     @objc func searchAction() {
-     //   self.viewModel.reloadDataSource()
         self.isFiltering = true
         self.viewModel.preloadSearch(search: self.textFild?.text ?? "")
- //       self.viewModel.searchListPhoto(search: self.textFild?.text ?? "")
     }
 }
 
@@ -138,37 +138,33 @@ extension MainViewController: UICollectionViewDelegate {
         if isFiltering {
             if indexPath.item == self.viewModel.countItem - 15 {
                 self.viewModel.searchListPhoto(search: self.textFild?.text ?? "")
-        }
+            }
         } else {
             if indexPath.item == self.viewModel.countItem - 15 {
                 self.viewModel.listPhoto()
+            }
         }
-        }
-        
-//            self.photocollection?.scrollToItem(at: IndexPath(item: gIndexForCollection, section: 0), at: .top, animated: false)
-//            gWillDisplay = false
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let model = self.viewModel.itemForDidSelect(index: indexPath.item)
-            self.viewModel.routTodetail(model: model)
-    
+        let model = self.viewModel.itemForDidSelect(index: indexPath.item)
+        self.viewModel.routTodetail(model: model)
+        
     }
 }
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return self.viewModel.countItem
+        return self.viewModel.countItem
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueCell(withType: MainCollectionViewCell.self, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
         
-            let model = self.viewModel.itemForCollection(index: indexPath.item)
+        let model = self.viewModel.itemForCollection(index: indexPath.item)
         cell.configur(model: model.image)
-            return cell
+        return cell
     }
 }
 
@@ -176,39 +172,4 @@ extension MainViewController: MainViewModelDelegate {
     func didFetchingData() {
         self.collection.reloadData()
     }
-}
-
-//extension MainViewController: UISearchResultsUpdating {
-//    func updateSearchResults(for searchController: UISearchController) {
-//        searchController.whiteColorText()
-//        self.collection.reloadData()
-//        self.viewModel.filterContentForSearchText(searchController.searchBar.text!)
-//    }
-//
-//}
-
-//extension UISearchController {
-//    func whiteColorText() {
-//        self.searchBar.searchTextField.attributedText = NSAttributedString(string: searchBar.text!, attributes: [.foregroundColor: UIColor.white])
-//    }
-//}
-
-extension MainViewController: UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        
-        for indexPath in indexPaths {
-            print("\(indexPath.item)")
-//            self.viewModel.loadPhoto(index: indexPath.item)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-     // Cancel any requests for data for the specified index paths.
-//     for indexPath in indexPaths {
-//     let model = models[indexPath.row]
-//     yourfetchClass.cancelFetch(model.id)
-//     }
-    }
-    
-    
 }

@@ -15,9 +15,6 @@ protocol MainViewModelOutputProtocol: class {
     func itemForCollection(index: Int) -> ImageModel
     func itemForDidSelect(index: Int) -> URL?
     func listPhoto()
-    func reloadDataSource()
- //   func loadPhoto(index: Int)
- //   func searchLoadPhoto(index: Int)
     func searchListPhoto(search: String)
     func routTodetail(model: URL?)
     func preload()

@@ -14,8 +14,8 @@ class DetailViewController: UIViewController {
     
     private let loadIndikator : UIActivityIndicatorView = {
         let ind = UIActivityIndicatorView(style: .large)
-        ind.backgroundColor = .darkGray
-        ind.alpha = 0.5
+        ind.backgroundColor = .white
+        ind.alpha = 0.3
         ind.translatesAutoresizingMaskIntoConstraints = false
         
         return ind
@@ -24,12 +24,21 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.castomBarBeckButton()
         self.setupLoadIndikator()
-        self.loadIndikator.startAnimating()
         self.viewModel.delegate = self
-        self.title = "Photo"
-        self.view.backgroundColor = .systemOrange
         self.viewModel.downloadPhoto()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func castomBarBeckButton() {
+        self.view.backgroundColor = .black
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        backButton.tintColor = .white
+        self.navigationController?.navigationBar.topItem!.backBarButtonItem = backButton;
     }
 
     private func setupLoadIndikator() {
@@ -40,6 +49,8 @@ class DetailViewController: UIViewController {
         loadIndikator.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         loadIndikator.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         loadIndikator.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        self.loadIndikator.startAnimating()
     }
     
     private func addViewScroll() {

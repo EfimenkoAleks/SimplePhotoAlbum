@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="SimplePhotoAlbum" customModuleProvider="target">
             <connections>
                 <outlet property="collection" destination="86Z-ib-F9p" id="Viz-AH-rma"/>
+                <outlet property="containerView" destination="TrP-Gf-N2d" id="F0O-Yy-WJc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="86Z-ib-F9p">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4GY-cu-xAF">
                         <size key="itemSize" width="128" height="128"/>
@@ -29,16 +30,26 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TrP-Gf-N2d">
+                    <rect key="frame" x="0.0" y="44" width="414" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="sgu-Ot-MTn"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="86Z-ib-F9p" secondAttribute="trailing" id="3SG-Gp-yw8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="TrP-Gf-N2d" secondAttribute="trailing" id="94u-ST-sbk"/>
                 <constraint firstItem="86Z-ib-F9p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Np8-yc-Tef"/>
+                <constraint firstItem="TrP-Gf-N2d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ogx-P5-Yte"/>
                 <constraint firstAttribute="bottom" secondItem="86Z-ib-F9p" secondAttribute="bottom" id="eNq-52-yY7"/>
-                <constraint firstItem="86Z-ib-F9p" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="it8-ND-sdN"/>
+                <constraint firstItem="86Z-ib-F9p" firstAttribute="top" secondItem="TrP-Gf-N2d" secondAttribute="bottom" constant="4" id="it8-ND-sdN"/>
+                <constraint firstItem="TrP-Gf-N2d" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="no6-bz-Bva"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="109"/>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
         </view>
     </objects>
     <resources>
