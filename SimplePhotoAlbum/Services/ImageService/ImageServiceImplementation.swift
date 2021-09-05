@@ -10,41 +10,20 @@ import Foundation
 class ImageServiceImplementation {
     
     private var session: URLSession
+    var imageCache = NSCache<NSURL, NSData>()
     
     init(session: URLSession) {
         self.session = session
-    }
-    
-    private func loadImageFromDiskWith(fileName: String) -> Data? {
-
-      let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-
-        if let dirPath = paths.first {
-            let filename = URL(string: fileName)?.lastPathComponent ?? fileName
-            let imageUrl = URL(fileURLWithPath: dirPath).appendingPathComponent(filename)
-            do {
-                let image = try Data(contentsOf: imageUrl)//UIImage(contentsOfFile: imageUrl.path)
-                return image
-            } catch {
-                return nil
-            }
-        }
-        return nil
     }
 }
 
 extension ImageServiceImplementation: ImageService {
     
      func downloadImage(_ url: URL, result: @escaping ((Data?) -> Void)) {
-        
-        let fileName = url.lastPathComponent
-        if self.loadImageFromDiskWith(fileName: fileName) != nil {
-            result(self.loadImageFromDiskWith(fileName: fileName)!)
-            return
-        }
+  
+        if let cachedData = self.imageCache.object(forKey: url as NSURL) {
+            result(cachedData as Data)
+        } else {
         
         let request = URLRequest(url: url)
         let task = self.session.dataTask(with: request) { (data, response, error) in
@@ -54,21 +33,12 @@ extension ImageServiceImplementation: ImageService {
                     return
                 }
                 
-                let fileManager = FileManager.default
-                let documentDir = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-                let localFile = documentDir.appendingPathComponent(fileName)
-                
-                do {
-                    try data.write(to: localFile)
-                    print("\(localFile)")
-                    result(self.loadImageFromDiskWith(fileName: fileName))
-                } catch let error {
-                    print("error saving file with error", error)
-                }
-                
-  //              result(UIImage(data: data))
+                self.imageCache.setObject(data as NSData, forKey: url as NSURL)
+                result(data)
+ 
             }
         }
         task.resume()
     }
+     }
 }

@@ -10,11 +10,9 @@ import Foundation
 class APIServiceImplementation {
     
     var session: URLSession
-//    let baseURL: URL = URL(string: "https://api.unsplash.com")!
-    let baseURL = "https://api.unsplash.com"
+    let baseURL = "https://api.unsplash.com/"
     let clientId = "uD2tVqG7FvBiJleWekfsv-Ty5z7clfT9COoxHtvP0rg"
-    // https://api.unsplash.com/photos?client_id=uD2tVqG7FvBiJleWekfsv-Ty5z7clfT9COoxHtvP0rg&order_by=ORDER&page=1&per_page=30
-    
+
     init(session: URLSession) {
         self.session = session
     }
@@ -28,7 +26,7 @@ class APIServiceImplementation {
             case .feed(let page):
                 return "photos?client_id=uD2tVqG7FvBiJleWekfsv-Ty5z7clfT9COoxHtvP0rg&order_by=ORDER&page=\(page)&per_page=30"
             case .search(let page, let search):
-                return "search/photos?page=\(page)&query=\(search)"
+                return "search/photos?client_id=uD2tVqG7FvBiJleWekfsv-Ty5z7clfT9COoxHtvP0rg&page=\(page)&query=\(search)&per_page=30"
             }
         }
     }
@@ -38,13 +36,8 @@ extension APIServiceImplementation: APIService {
     
     func searchListPhoto(photo:Int, search: String, completionHandler: @escaping (Result<ResultSearch>) -> Void) {
         
-//        let targetURL = baseURL.appendingPathComponent(Endpoint.feed(photo).path)
-//
-//        var request = URLRequest(url: targetURL)
-//        request.httpMethod = "GET"
-//        request.setValue("Client-ID \(clientId)", forHTTPHeaderField: "Authorization")
-        
-        let str = "https://api.unsplash.com/search/photos?client_id=uD2tVqG7FvBiJleWekfsv-Ty5z7clfT9COoxHtvP0rg&page=\(photo)&query=\(search)&per_page=30"
+        let str = baseURL + Endpoint.search(photo, search).path
+ 
         let targetURL = URL(string: str)
         guard let url = targetURL else { return }
         let request = URLRequest(url: url)
@@ -66,14 +59,9 @@ extension APIServiceImplementation: APIService {
     }
     
     func getListPhoto(photo:Int, completionHandler: @escaping (Result<[ListPhotos]>) -> Void) {
-        
- //       let targetURL = baseURL.appendingPathComponent(Endpoint.feed(photo).path)
-  //      let request = URLRequest(url: targetURL)
-//        request.httpMethod = "GET"
-//        request.setValue("Client-ID \(clientId)", forHTTPHeaderField: "Authorization")
-//        let targetURL = URL(string: "https://api.unsplash.com/photos?client_id=uD2tVqG7FvBiJleWekfsv-Ty5z7clfT9COoxHtvP0rg&order_by=ORDER&page=1&per_page=30")
        
-        let str = baseURL + "/photos?client_id=" + clientId + "&order_by=ORDER&page=\(photo)&per_page=30"
+        let str = baseURL + Endpoint.feed(photo).path
+ 
         let targetURL = URL(string: str)
         guard let url = targetURL else { return }
         let request = URLRequest(url: url)
