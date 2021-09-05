@@ -10,11 +10,11 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var viewModel: DetailViewModelProtocol!
-    var viewScroll: ImageScrollView?
+    private var viewScroll: ImageScrollView?
     
-    let loadIndikator : UIActivityIndicatorView = {
+    private let loadIndikator : UIActivityIndicatorView = {
         let ind = UIActivityIndicatorView(style: .large)
-        ind.backgroundColor = .lightGray
+        ind.backgroundColor = .darkGray
         ind.alpha = 0.5
         ind.translatesAutoresizingMaskIntoConstraints = false
         
@@ -31,12 +31,7 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = .systemOrange
         self.viewModel.downloadPhoto()
     }
-    
-//    override func viewWillLayoutSubviews() {
-//        self.setupLoadIndikator()
-//        self.loadIndikator.startAnimating()
-//    }
-    
+
     private func setupLoadIndikator() {
         
         self.view.addSubview(loadIndikator)

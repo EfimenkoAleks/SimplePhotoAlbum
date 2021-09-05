@@ -50,7 +50,7 @@ extension MainViewModel: MainViewModelProtocol {
     func itemForDidSelect(index: Int) -> URL? {
        let url = self.images[index].url
         let sort = self.dataSource.filter({$0.urls?.small == url})
-        return sort.first?.urls?.small
+        return sort.first?.urls?.full
         //    return self.photos[index]
     }
     
