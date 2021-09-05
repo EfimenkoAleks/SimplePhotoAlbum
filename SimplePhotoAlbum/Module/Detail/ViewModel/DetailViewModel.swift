@@ -24,7 +24,9 @@ extension DetailViewModel: DetailViewModelProtocol {
         guard let url = self.url else { return }
         self.service.downloadImage(url) { [weak self] (result) in
             guard let self = self , let data = result else { return }
-            self.delegate?.didDownloadPhoto(image: data)
+            DispatchQueue.main.async {
+                self.delegate?.didDownloadPhoto(image: data)
+            }
         }
     }
 }
