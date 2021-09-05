@@ -12,20 +12,22 @@ protocol MainViewModelInputProtocol: class {}
 protocol MainViewModelOutputProtocol: class {
     var delegate: MainViewModelDelegate? { set get }
     var countItem: Int { get }
-    var searchCountItem: Int { get }
-    func itemForCollection(index: Int) -> String
-    func searchItemForCollection(index: Int) -> String
-    func listPhoto() 
-    func searchListPhoto()
-    func goListPhoto()
-    func routTodetail(model: String)
-    func filterContentForSearchText(_ searchText: String)
+    func itemForCollection(index: Int) -> ImageModel
+    func itemForDidSelect(index: Int) -> URL?
+    func listPhoto()
+    func reloadDataSource()
+ //   func loadPhoto(index: Int)
+ //   func searchLoadPhoto(index: Int)
+    func searchListPhoto(search: String)
+    func routTodetail(model: URL?)
+    func preload()
+    func preloadSearch(search: String)
 }
 
 protocol MainViewModelProtocol: MainViewModelInputProtocol, MainViewModelOutputProtocol {}
 
 protocol MainRouterProtocol: class {
-    func routToDetail(model: String)
+    func routToDetail(model: URL?)
 }
 
 protocol MainViewModelDelegate: class {

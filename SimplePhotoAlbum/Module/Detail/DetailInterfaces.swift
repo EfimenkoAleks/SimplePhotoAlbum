@@ -19,5 +19,5 @@ protocol DetailViewModelProtocol: DetailViewModelInputProtocol, DetailViewModelO
 protocol DetailRouterProtocol {}
 
 protocol DetailViewModelDelegate: class {
-    func didDownloadPhoto(image: String)
+    func didDownloadPhoto(image: Data)
 }

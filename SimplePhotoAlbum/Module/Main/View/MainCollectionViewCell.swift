@@ -9,14 +9,15 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
 
-    let service = DIContainer.default.imageService
+//    let service = DIContainer.default.imageService
     @IBOutlet weak var imageImageView: UIImageView!
     
-    func configur(model: String) {
-        self.imageImageView.image = UIImage(named: model)
-    }
+//    func configur(model: String) {
+//        self.imageImageView.image = UIImage(named: model)
+//    }
     
-//    func configur(model: URL?) {
+    func configur(model: Data) {
+        self.imageImageView.image = UIImage(data: model)
 //        guard let url = model else { return }
 //
 //        service.downloadImage(url) { (result) in
@@ -25,5 +26,5 @@ class MainCollectionViewCell: UICollectionViewCell {
 //                self.imageImageView.image = UIImage(data: image)
 //            }
 //        }
-//    }
+    }
 }

@@ -9,7 +9,14 @@ import Foundation
 
 struct ResultSearch: Codable {
     var total: Int?
-    var results: [OneResultSearch]?
+    var totalPages: Int?
+    var results: [ListPhotos]?
+    
+    enum CodingCase: String, CodingKey {
+        case total = "total"
+        case totalPages = "total_pages"
+        case results = "results"
+    }
 }
 
 struct OneResultSearch: Codable {
