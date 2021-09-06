@@ -10,7 +10,6 @@ import Foundation
 class MainViewModel {
     private var router: MainRouterProtocol
     weak var delegate: MainViewModelDelegate?
-    private var photos: [ListPhotos]
     private var images: [ImageModel]
     private var dataSource: [ListPhotos]
     private let service: APIService
@@ -23,7 +22,6 @@ class MainViewModel {
          imageService: ImageService = DIContainer.default.imageService
     ) {
         self.router = router
-        self.photos = []
         self.numberPage = 0
         self.searchText = ""
         self.images = []
