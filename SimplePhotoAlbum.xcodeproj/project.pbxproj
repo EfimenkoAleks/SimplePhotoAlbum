@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		CE93FD822790495C00EEEAE2 /* mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CE93FD832790495C00EEEAE2 /* Build configuration list for PBXAggregateTarget "mogenerator" */;
+			buildPhases = (
+				CE93FD8727904A0C00EEEAE2 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = mogenerator;
+			productName = mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		CE15E38926DFCEF300ACA71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E38826DFCEF300ACA71B /* AppDelegate.swift */; };
 		CE15E39226DFCEF500ACA71B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE15E39126DFCEF500ACA71B /* Assets.xcassets */; };
@@ -36,6 +50,23 @@
 		CE15E40F26E3FA8C00ACA71B /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E40E26E3FA8C00ACA71B /* ImageModel.swift */; };
 		CE15E41B26E529E100ACA71B /* PortraitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E41A26E529E100ACA71B /* PortraitLayout.swift */; };
 		CE15E41F26E52A2E00ACA71B /* LandscapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E41E26E52A2E00ACA71B /* LandscapeLayout.swift */; };
+		CE93FD5A278ECA4400EEEAE2 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD59278ECA4400EEEAE2 /* AppManager.swift */; };
+		CE93FD5D278ECC8F00EEEAE2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD5C278ECC8F00EEEAE2 /* AppSettings.swift */; };
+		CE93FD60278EDF4E00EEEAE2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD5F278EDF4E00EEEAE2 /* AuthService.swift */; };
+		CE93FD67278EE96700EEEAE2 /* SessionStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD66278EE96700EEEAE2 /* SessionStorable.swift */; };
+		CE93FD69278EE9E200EEEAE2 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD68278EE9E200EEEAE2 /* Session.swift */; };
+		CE93FD6B278EF50400EEEAE2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD6A278EF50400EEEAE2 /* Storage.swift */; };
+		CE93FD6D278EF5C400EEEAE2 /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD6C278EF5C400EEEAE2 /* Storable.swift */; };
+		CE93FD6F278EF96100EEEAE2 /* SessionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD6E278EF96100EEEAE2 /* SessionStorage.swift */; };
+		CE93FD71278EFB0F00EEEAE2 /* AppSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD70278EFB0F00EEEAE2 /* AppSettingsStorage.swift */; };
+		CE93FD73278EFB9700EEEAE2 /* AppSettingsStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD72278EFB9700EEEAE2 /* AppSettingsStorable.swift */; };
+		CE93FD75278F0BC000EEEAE2 /* AppInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD74278F0BC000EEEAE2 /* AppInfoService.swift */; };
+		CE93FD77278F2EE500EEEAE2 /* UserSettingsStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD76278F2EE500EEEAE2 /* UserSettingsStorable.swift */; };
+		CE93FD79278F2FAC00EEEAE2 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD78278F2FAC00EEEAE2 /* UserSettings.swift */; };
+		CE93FD7B278F30FA00EEEAE2 /* UserSettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD7A278F30FA00EEEAE2 /* UserSettingsStorage.swift */; };
+		CE93FD7D278F338700EEEAE2 /* UserSettinsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD7C278F338700EEEAE2 /* UserSettinsService.swift */; };
+		CE93FD812790440900EEEAE2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD7F2790440900EEEAE2 /* DataModel.xcdatamodeld */; };
+		CE93FD892790963100EEEAE2 /* Models in Resources */ = {isa = PBXBuildFile; fileRef = CE93FD882790963100EEEAE2 /* Models */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +101,23 @@
 		CE15E40E26E3FA8C00ACA71B /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		CE15E41A26E529E100ACA71B /* PortraitLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitLayout.swift; sourceTree = "<group>"; };
 		CE15E41E26E52A2E00ACA71B /* LandscapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeLayout.swift; sourceTree = "<group>"; };
+		CE93FD59278ECA4400EEEAE2 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		CE93FD5C278ECC8F00EEEAE2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		CE93FD5F278EDF4E00EEEAE2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CE93FD66278EE96700EEEAE2 /* SessionStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStorable.swift; sourceTree = "<group>"; };
+		CE93FD68278EE9E200EEEAE2 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		CE93FD6A278EF50400EEEAE2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		CE93FD6C278EF5C400EEEAE2 /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		CE93FD6E278EF96100EEEAE2 /* SessionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStorage.swift; sourceTree = "<group>"; };
+		CE93FD70278EFB0F00EEEAE2 /* AppSettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsStorage.swift; sourceTree = "<group>"; };
+		CE93FD72278EFB9700EEEAE2 /* AppSettingsStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsStorable.swift; sourceTree = "<group>"; };
+		CE93FD74278F0BC000EEEAE2 /* AppInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoService.swift; sourceTree = "<group>"; };
+		CE93FD76278F2EE500EEEAE2 /* UserSettingsStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsStorable.swift; sourceTree = "<group>"; };
+		CE93FD78278F2FAC00EEEAE2 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		CE93FD7A278F30FA00EEEAE2 /* UserSettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsStorage.swift; sourceTree = "<group>"; };
+		CE93FD7C278F338700EEEAE2 /* UserSettinsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettinsService.swift; sourceTree = "<group>"; };
+		CE93FD802790440900EEEAE2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		CE93FD882790963100EEEAE2 /* Models */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Models; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +150,8 @@
 		CE15E38726DFCEF300ACA71B /* SimplePhotoAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				CE93FD7E2790436200EEEAE2 /* CoreData */,
+				CE93FD5B278ECC4600EEEAE2 /* Models */,
 				CE15E3C126E017B000ACA71B /* Services */,
 				CE15E3C026E0179C00ACA71B /* Module */,
 				CE15E3BC26DFDC1000ACA71B /* Extension */,
@@ -174,11 +224,16 @@
 		CE15E3C126E017B000ACA71B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CE93FD61278EE07A00EEEAE2 /* Storage */,
+				CE93FD5E278EDF0C00EEEAE2 /* AuthService */,
+				CE93FD58278EC9FF00EEEAE2 /* AppManager */,
 				CE15E3D726E0CC1E00ACA71B /* NetworkModel */,
 				CE15E3D326E0CA1200ACA71B /* API */,
 				CE15E3C526E0186700ACA71B /* ImageService */,
 				CE15E3C226E017D500ACA71B /* DIContainer.swift */,
 				CE15E3D026E0C81500ACA71B /* Service.swift */,
+				CE93FD74278F0BC000EEEAE2 /* AppInfoService.swift */,
+				CE93FD7C278F338700EEEAE2 /* UserSettinsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -256,6 +311,56 @@
 			path = LayoutCell;
 			sourceTree = "<group>";
 		};
+		CE93FD58278EC9FF00EEEAE2 /* AppManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE93FD59278ECA4400EEEAE2 /* AppManager.swift */,
+			);
+			path = AppManager;
+			sourceTree = "<group>";
+		};
+		CE93FD5B278ECC4600EEEAE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE93FD5C278ECC8F00EEEAE2 /* AppSettings.swift */,
+				CE93FD68278EE9E200EEEAE2 /* Session.swift */,
+				CE93FD78278F2FAC00EEEAE2 /* UserSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE93FD5E278EDF0C00EEEAE2 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				CE93FD5F278EDF4E00EEEAE2 /* AuthService.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
+		CE93FD61278EE07A00EEEAE2 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CE93FD66278EE96700EEEAE2 /* SessionStorable.swift */,
+				CE93FD6A278EF50400EEEAE2 /* Storage.swift */,
+				CE93FD6C278EF5C400EEEAE2 /* Storable.swift */,
+				CE93FD6E278EF96100EEEAE2 /* SessionStorage.swift */,
+				CE93FD70278EFB0F00EEEAE2 /* AppSettingsStorage.swift */,
+				CE93FD72278EFB9700EEEAE2 /* AppSettingsStorable.swift */,
+				CE93FD76278F2EE500EEEAE2 /* UserSettingsStorable.swift */,
+				CE93FD7A278F30FA00EEEAE2 /* UserSettingsStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		CE93FD7E2790436200EEEAE2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CE93FD882790963100EEEAE2 /* Models */,
+				CE93FD7F2790440900EEEAE2 /* DataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -288,6 +393,9 @@
 					CE15E38426DFCEF300ACA71B = {
 						CreatedOnToolsVersion = 12.4;
 					};
+					CE93FD822790495C00EEEAE2 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = CE15E38026DFCEF300ACA71B /* Build configuration list for PBXProject "SimplePhotoAlbum" */;
@@ -304,6 +412,7 @@
 			projectRoot = "";
 			targets = (
 				CE15E38426DFCEF300ACA71B /* SimplePhotoAlbum */,
+				CE93FD822790495C00EEEAE2 /* mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -313,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE93FD892790963100EEEAE2 /* Models in Resources */,
 				CE15E39526DFCEF500ACA71B /* LaunchScreen.storyboard in Resources */,
 				CE15E3B226DFD14100ACA71B /* MainViewController.xib in Resources */,
 				CE15E3FE26E1895500ACA71B /* DetailViewController.xib in Resources */,
@@ -323,15 +433,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CE93FD8727904A0C00EEEAE2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd SimplePhotoAlbum/CoreData\nmogenerator --swift --machine-dir \"./Models/RAW\" --human-dir \"./Models\" --template-var arc=true -m ./DataModel.xcdatamodeld/DataModel.xcdatamodel\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE15E38126DFCEF300ACA71B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE93FD5D278ECC8F00EEEAE2 /* AppSettings.swift in Sources */,
+				CE93FD812790440900EEEAE2 /* DataModel.xcdatamodeld in Sources */,
+				CE93FD69278EE9E200EEEAE2 /* Session.swift in Sources */,
 				CE15E3B926DFD8B600ACA71B /* MainCollectionViewCell.swift in Sources */,
+				CE93FD5A278ECA4400EEEAE2 /* AppManager.swift in Sources */,
 				CE15E3A326DFD02A00ACA71B /* MainInterfaces.swift in Sources */,
+				CE93FD79278F2FAC00EEEAE2 /* UserSettings.swift in Sources */,
+				CE93FD67278EE96700EEEAE2 /* SessionStorable.swift in Sources */,
 				CE15E3F926E1892A00ACA71B /* DetailWireFrame.swift in Sources */,
 				CE15E3EC26E10BD500ACA71B /* ResultSearch.swift in Sources */,
+				CE93FD6F278EF96100EEEAE2 /* SessionStorage.swift in Sources */,
 				CE15E3AD26DFD07700ACA71B /* MainWireFrame.swift in Sources */,
 				CE15E40F26E3FA8C00ACA71B /* ImageModel.swift in Sources */,
 				CE15E3CA26E018EC00ACA71B /* ImageServiceImplementation.swift in Sources */,
@@ -340,18 +477,27 @@
 				CE15E3D126E0C81500ACA71B /* Service.swift in Sources */,
 				CE15E38926DFCEF300ACA71B /* AppDelegate.swift in Sources */,
 				CE15E3BE26DFDC4200ACA71B /* Extension+CollectionViewCell.swift in Sources */,
+				CE93FD77278F2EE500EEEAE2 /* UserSettingsStorable.swift in Sources */,
 				CE15E3A926DFD05B00ACA71B /* MainRouter.swift in Sources */,
 				CE15E40826E1956500ACA71B /* ImageScrollView.swift in Sources */,
 				CE15E3D526E0CA4700ACA71B /* APIService.swift in Sources */,
+				CE93FD6D278EF5C400EEEAE2 /* Storable.swift in Sources */,
+				CE93FD7D278F338700EEEAE2 /* UserSettinsService.swift in Sources */,
+				CE93FD75278F0BC000EEEAE2 /* AppInfoService.swift in Sources */,
 				CE15E3E026E0E11600ACA71B /* APIServiceImplementation.swift in Sources */,
+				CE93FD73278EFB9700EEEAE2 /* AppSettingsStorable.swift in Sources */,
 				CE15E3B126DFD14100ACA71B /* MainViewController.swift in Sources */,
 				CE15E41F26E52A2E00ACA71B /* LandscapeLayout.swift in Sources */,
+				CE93FD71278EFB0F00EEEAE2 /* AppSettingsStorage.swift in Sources */,
 				CE15E41B26E529E100ACA71B /* PortraitLayout.swift in Sources */,
+				CE93FD60278EDF4E00EEEAE2 /* AuthService.swift in Sources */,
 				CE15E3C326E017D500ACA71B /* DIContainer.swift in Sources */,
 				CE15E40126E18ACA00ACA71B /* DetailViewModel.swift in Sources */,
 				CE15E3F326E188FC00ACA71B /* DetailInterfaces.swift in Sources */,
 				CE15E3DD26E0CEBF00ACA71B /* ListPhotos.swift in Sources */,
 				CE15E3B526DFD1B600ACA71B /* MainViewModel.swift in Sources */,
+				CE93FD6B278EF50400EEEAE2 /* Storage.swift in Sources */,
+				CE93FD7B278F30FA00EEEAE2 /* UserSettingsStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +669,22 @@
 			};
 			name = Release;
 		};
+		CE93FD842790495C00EEEAE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE93FD852790495C00EEEAE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -544,7 +706,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CE93FD832790495C00EEEAE2 /* Build configuration list for PBXAggregateTarget "mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE93FD842790495C00EEEAE2 /* Debug */,
+				CE93FD852790495C00EEEAE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CE93FD7F2790440900EEEAE2 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CE93FD802790440900EEEAE2 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = CE93FD802790440900EEEAE2 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE15E37D26DFCEF300ACA71B /* Project object */;
 }
