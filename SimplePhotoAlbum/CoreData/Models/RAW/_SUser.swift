@@ -1,10 +1,10 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to User.swift instead.
+// Make changes to SUser.swift instead.
 
 import Foundation
 import CoreData
 
-public enum UserAttributes: String {
+public enum SUserAttributes: String {
     case addres = "addres"
     case city = "city"
     case countryCode = "countryCode"
@@ -19,12 +19,12 @@ public enum UserAttributes: String {
     case zip = "zip"
 }
 
-open class _User: NSManagedObject {
+open class _SUser: NSManagedObject {
 
     // MARK: - Class methods
 
     open class func entityName () -> String {
-        return "User"
+        return "SUser"
     }
 
     open class func entity(managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
@@ -32,7 +32,7 @@ open class _User: NSManagedObject {
     }
 
     @nonobjc
-    open class func fetchRequest() -> NSFetchRequest<User> {
+    open class func fetchRequest() -> NSFetchRequest<SUser> {
         return NSFetchRequest(entityName: self.entityName())
     }
 
@@ -43,7 +43,7 @@ open class _User: NSManagedObject {
     }
 
     public convenience init?(managedObjectContext: NSManagedObjectContext) {
-        guard let entity = _User.entity(managedObjectContext: managedObjectContext) else { return nil }
+        guard let entity = _SUser.entity(managedObjectContext: managedObjectContext) else { return nil }
         self.init(entity: entity, insertInto: managedObjectContext)
     }
 
