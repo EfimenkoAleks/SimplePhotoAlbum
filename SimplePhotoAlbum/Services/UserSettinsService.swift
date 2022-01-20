@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserSettinsService: UserSettingsStorable
+class UserSettinsService: UserSettingsStorable {
 private let userSettingsStorage: UserSettingsStorable
 
 var userSettings: UserSettings {
@@ -17,17 +17,18 @@ var userSettings: UserSettings {
     set {
         userSettingsStorage.saveUserSettings(newValue)
     }
+}
     
     var needShowHowItCalculated: Bool {
-        return userSettings.userOpenedPriceCount <10
+        return userSettings.userOpenedPriceCount < 10
     }
     
     var appDidUpdate: Bool {
-        return userSettings.lastAppVersion != Bundle.appVersion
+        return userSettings.lastAppVersion != Bundle.version()
     }
     
-    init(userSettingsStorage: UserSettings = self.userSettings) {
-        self.UserSettingsStorage = userSettingsStorage
+    init(userSettingsStorage: UserSettingsStorable) {
+        self.userSettingsStorage = userSettingsStorage
     }
     
     

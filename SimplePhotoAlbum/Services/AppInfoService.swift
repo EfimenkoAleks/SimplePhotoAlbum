@@ -7,6 +7,10 @@
 
 import Foundation
 
+extension NSNotification.Name {
+    static let kDidChangeAppSettings: NSNotification.Name = .init("kDidChangeAppSettings")
+}
+
 class AppInfoService {
     
     private let appSettingsStorage: AppSettingsStorable
@@ -19,5 +23,16 @@ class AppInfoService {
         self.appSettingsStorage = appSettingsStorage
         
         //preloadAppSettingsData()
+    }
+    
+    private(set) var settings: AppSetings {
+        get {
+            appSettingsStorage.getAppSettings() ?? AppSetings.createDefaultSettings()
+        }
+        set {
+            appSettingsStorage.saveAppSettings(newValue)
+            NotificationCenter.default.post(name: .kDidChangeAppSettings, object: nil)
+            didChangeSettings?()
+        }
     }
 }

@@ -13,7 +13,7 @@ class AppManager {
     
     let authService: AuthService = AuthService(sessionStorage: SessionStorage(storage: Storage()))
     let appInfoService: AppInfoService = AppInfoService(appSettingsStorage: AppSettingsStorage(storage: Storage()))
-    let userSettingsService: UserSettin
+    let userSettingsService: UserSettins = UserSettings()
     var preferedLanguage: [String] {
         return [appInfoService.settings.localeCode]
     }

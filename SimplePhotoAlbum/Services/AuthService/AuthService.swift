@@ -19,9 +19,9 @@ class AuthService {
         return sessionStorege.getSession()
     }
     
-    var user: User? {
-   //     return User.objectByID(session?.userID)
-        return User(name: "name")
+    var user: SUser? {
+        return SUser.objectByID(session?.userID)
+        
     }
     
     var isAutenticatated: Bool {
@@ -43,10 +43,6 @@ class AuthService {
         sessionStorege.clear()
     }
     
-}
-
-struct User {
-    var name: String
 }
 
 struct Buyer {
