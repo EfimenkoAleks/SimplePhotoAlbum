@@ -32,19 +32,8 @@ class AuthService {
         sessionStorege.saveSession(session)
     }
     
-    func becomeBuyer(buyer: Buyer) {
-//        User.defaultStorage.saveAndWait { context in
-//            user?.inContext(context)?.buyer = buyer.inContext(context)
-//        }
-        
-    }
-    
     func logout() {
         sessionStorege.clear()
     }
     
-}
-
-struct Buyer {
-    var user: String
 }

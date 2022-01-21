@@ -73,6 +73,8 @@
 		CE9CAF842795873400A4030A /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF832795873400A4030A /* Array+NSManagedObjectContext.swift */; };
 		CE9CAF862795884100A4030A /* DBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF852795884100A4030A /* DBStorageConfigurator.swift */; };
 		CE9CAF8827971D9800A4030A /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF8727971D9800A4030A /* DataFormatter.swift */; };
+		CEB5E57F279AFAC600CBA27B /* GatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */; };
+		CEB5E581279B2C0200CBA27B /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E580279B2C0200CBA27B /* AppFlowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +132,8 @@
 		CE9CAF832795873400A4030A /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
 		CE9CAF852795884100A4030A /* DBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBStorageConfigurator.swift; sourceTree = "<group>"; };
 		CE9CAF8727971D9800A4030A /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
+		CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayConfigurator.swift; sourceTree = "<group>"; };
+		CEB5E580279B2C0200CBA27B /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +173,7 @@
 				CE15E3C026E0179C00ACA71B /* Module */,
 				CE15E3BC26DFDC1000ACA71B /* Extension */,
 				CE15E38826DFCEF300ACA71B /* AppDelegate.swift */,
+				CEB5E580279B2C0200CBA27B /* AppFlowController.swift */,
 				CE15E39126DFCEF500ACA71B /* Assets.xcassets */,
 				CE15E39326DFCEF500ACA71B /* LaunchScreen.storyboard */,
 				CE15E39626DFCEF500ACA71B /* Info.plist */,
@@ -265,6 +270,7 @@
 			children = (
 				CE15E3D426E0CA4700ACA71B /* APIService.swift */,
 				CE15E3DF26E0E11600ACA71B /* APIServiceImplementation.swift */,
+				CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 				CE93FD67278EE96700EEEAE2 /* SessionStorable.swift in Sources */,
 				CE9CAF862795884100A4030A /* DBStorageConfigurator.swift in Sources */,
 				CE15E3F926E1892A00ACA71B /* DetailWireFrame.swift in Sources */,
+				CEB5E57F279AFAC600CBA27B /* GatewayConfigurator.swift in Sources */,
 				CE15E3EC26E10BD500ACA71B /* ResultSearch.swift in Sources */,
 				CE93FD6F278EF96100EEEAE2 /* SessionStorage.swift in Sources */,
 				CE15E3AD26DFD07700ACA71B /* MainWireFrame.swift in Sources */,
@@ -537,6 +544,7 @@
 				CE93FD6D278EF5C400EEEAE2 /* Storable.swift in Sources */,
 				CE93FD7D278F338700EEEAE2 /* UserSettinsService.swift in Sources */,
 				CE93FD75278F0BC000EEEAE2 /* AppInfoService.swift in Sources */,
+				CEB5E581279B2C0200CBA27B /* AppFlowController.swift in Sources */,
 				CE15E3E026E0E11600ACA71B /* APIServiceImplementation.swift in Sources */,
 				CE93FD73278EFB9700EEEAE2 /* AppSettingsStorable.swift in Sources */,
 				CE9CAF812795850A00A4030A /* DBStorage.swift in Sources */,

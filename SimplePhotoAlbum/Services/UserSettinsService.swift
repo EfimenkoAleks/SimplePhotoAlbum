@@ -7,15 +7,15 @@
 
 import Foundation
 
-class UserSettinsService: UserSettingsStorable {
-private let userSettingsStorage: UserSettingsStorable
+class UserSettinsService {
+private let _userSettingsStorage: UserSettingsStorable
 
 var userSettings: UserSettings {
     get {
-        userSettingsStorage.getUserSettings() ?? UserSettings.defaultSettings
+        _userSettingsStorage.getUserSettings() ?? UserSettings.defaultSettings
     }
     set {
-        userSettingsStorage.saveUserSettings(newValue)
+        _userSettingsStorage.saveUserSettings(newValue)
     }
 }
     
@@ -28,8 +28,12 @@ var userSettings: UserSettings {
     }
     
     init(userSettingsStorage: UserSettingsStorable) {
-        self.userSettingsStorage = userSettingsStorage
+        _userSettingsStorage = userSettingsStorage
     }
     
-    
+    func userDidOpenPrice() {
+        var userSettingsNew: UserSettings = userSettings
+        userSettingsNew.userOpenedPriceCount += 1
+        userSettings = userSettingsNew
+    }
 }
