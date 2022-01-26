@@ -32,7 +32,7 @@ class AppManager {
         self.window = window
         let viewController: AppFlowController = AppFlowController()
         window?.rootViewController = viewController
-        viewController.setSelected
+        viewController.setSelectedTab()
     }
     
     func updateHeaders() {
