@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     var viewModel: MainViewModelProtocol!
+    weak var firstCoordinator: FirstCoordinator?
     
     private var isFiltering: Bool = false
     private var textFild: UITextField?
@@ -148,8 +149,7 @@ extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = self.viewModel.itemForDidSelect(index: indexPath.item)
-        self.viewModel.routTodetail(model: model)
-        
+        firstCoordinator?.showDetailController(url: model)
     }
 }
 

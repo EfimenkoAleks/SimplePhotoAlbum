@@ -5,10 +5,21 @@
 //  Created by user on 21.01.2022.
 //
 
-import Foundation
 import UIKit
 
 class AppFlowController: UIViewController {
+    
+    private struct TabBarItemAppearance {
+        static var firstControllerTitle: String = "colection"
+        static var secondControllerTitle: String = "detail"
+        static var firstControllerImage: String = "tray"
+        static var secondControllerImage: String = "book"
+        static var firstSelectedControllerImage: String = "tray.fill"
+        static var secondSelectedControllerImage: String = "book.fill"
+        static var urlForSecondController: URL = URL(string: "https://images.unsplash.com/photo-1643266809211-8c65ed4a92c8?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNTc4ODF8MHwxfGFsbHwyNXx8fHx8fHx8MTY0MzI5MTk0OQ&ixlib=rb-1.2.1&q=85")!
+    }
+    var firstCoordinator: FirstCoordinator?
+    var secondCoordinator: SecondCoordinator?
     
     var tabBarItemTypes: [TabBarItemType] {
         return []
@@ -18,13 +29,23 @@ class AppFlowController: UIViewController {
         case first
         case second
         
-        var item: UITabBarItem {
+        var item: TabBarItem {
             switch self {
             case .first:
-                return UITabBarItem(title: "colection", image: UIImage(systemName: "tray"), tag: self.rawValue)
+                return TabBarItem(
+                    inTitle: TabBarItemAppearance.firstControllerTitle,
+                    inImage: TabBarItemAppearance.firstControllerImage,
+                    inSelectedImage: TabBarItemAppearance.firstSelectedControllerImage,
+                    inTag: self.rawValue
+                )
                 
             case .second:
-                return UITabBarItem(title: "detail", image: UIImage(systemName: "book"), tag: self.rawValue)
+                return TabBarItem(
+                    inTitle: TabBarItemAppearance.secondControllerTitle,
+                    inImage: TabBarItemAppearance.secondControllerImage,
+                    inSelectedImage: TabBarItemAppearance.secondSelectedControllerImage,
+                    inTag: self.rawValue
+                )
             }
         }
     }
@@ -86,21 +107,22 @@ fileprivate extension AppFlowController {
         
         switch itemForVC {
         case .first:
-            let vc: MainViewController = MainViewController()
-            vc.tabBarItem = itemForVC.item
-            let nav = UINavigationController.init(rootViewController: vc)
-            return nav
+            let navigController = UINavigationController()
+            firstCoordinator = FirstCoordinator(navigationController: navigController)
+            firstCoordinator?.start(itemForVC.item)
+            return firstCoordinator?.navigationController ?? UINavigationController()
         case .second:
-            let vc: DetailViewController = DetailViewController()
-            vc.tabBarItem = itemForVC.item
-            let nav = UINavigationController.init(rootViewController: vc)
-            return nav
+            let navigController = UINavigationController()
+            secondCoordinator = SecondCoordinator(navigationController: navigController)
+            secondCoordinator?.start(itemForVC.item)
+            return secondCoordinator?.navigationController ?? UINavigationController()
         }
     }
     
     func updateSelectedViewController() {
         guard let item = embedTabBar.selectedItem,
               let itemType = TabBarItemType(rawValue: item.tag) else { return }
+        
         if let item: TabBarItemType = curentSelectedItemType,
            let vc: UIViewController = embedViewControllers[item] {
             vc.willMove(toParent: nil)
@@ -132,5 +154,6 @@ extension AppFlowController: UITabBarDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         // here is the logic for selecting items
+        updateSelectedViewController()
     }
 }

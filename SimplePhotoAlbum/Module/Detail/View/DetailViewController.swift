@@ -10,6 +10,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var viewModel: DetailViewModelProtocol!
+    weak var secondCoordinator: SecondCoordinator?
+    weak var firstCoordinator: FirstCoordinator?
     private var viewScroll: ImageScrollView?
     
     private let loadIndikator : UIActivityIndicatorView = {

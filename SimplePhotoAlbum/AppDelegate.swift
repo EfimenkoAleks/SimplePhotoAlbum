@@ -14,18 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
+        DBStorageConfigurator.registerStorageClass(MainDBStorage.self)
         let window = UIWindow()
-        
-        let module = MainWireFrame.create()
-        let navigation = UINavigationController(rootViewController: module)
-        navigation.isNavigationBarHidden = true
-        navigation.navigationBar.isTranslucent = true
-        navigation.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigation.navigationBar.shadowImage = UIImage()
-        window.rootViewController = navigation
+        AppManager.shared.updateRootVC(window)
         window.makeKeyAndVisible()
-        self.window = window
         return true
     }
 }
