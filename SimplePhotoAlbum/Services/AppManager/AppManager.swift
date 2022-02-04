@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+extension NSNotification.Name {
+    static let kNeadUpdateCollection: NSNotification.Name = .init("kNeadUpdateCollection")
+}
+
 class AppManager {
     
     static let shared: AppManager = AppManager()
@@ -33,6 +37,15 @@ class AppManager {
         let viewController: AppFlowController = AppFlowController()
         window?.rootViewController = viewController
         viewController.setSelectedTab()
+    }
+    
+    func loadFirstData() {
+        let photoCollect = BaseFetcher.shared.photoService
+        photoCollect.reload { state in
+            if state == .loaded {
+                NotificationCenter.default.post(name: .kNeadUpdateCollection, object: nil)
+            }
+        }
     }
     
     func updateHeaders() {

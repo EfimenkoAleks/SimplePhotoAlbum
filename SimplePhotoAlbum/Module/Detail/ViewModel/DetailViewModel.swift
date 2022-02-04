@@ -12,7 +12,7 @@ class DetailViewModel {
     private var url: URL?
     weak var delegate: DetailViewModelDelegate?
     
-    init(url: URL?, service: ImageService = DIContainer.default.imageService) {
+    init(url: URL?, service: ImageService = BaseFetcher.shared.imageService) {
         self.service = service
         self.url = url
     }

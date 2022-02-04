@@ -2,7 +2,7 @@
 //  Service.swift
 //  SimplePhotoAlbum
 //
-//  Created by user on 02.09.2021.
+//  Created by user on 01.02.2022.
 //
 
 import Foundation
