@@ -39,14 +39,14 @@ class AppManager {
         viewController.setSelectedTab()
     }
     
-    func loadFirstData() {
-        let photoCollect = BaseFetcher.shared.photoService
-        photoCollect.reload { state in
-            if state == .loaded {
-                NotificationCenter.default.post(name: .kNeadUpdateCollection, object: nil)
-            }
-        }
-    }
+//    func loadFirstData() {
+//        let photoCollect = BaseFetcher.shared.photoService
+//        photoCollect.reload(with: ) { state in
+//            if state == .loaded {
+//                NotificationCenter.default.post(name: .kNeadUpdateCollection, object: nil)
+//            }
+//        }
+//    }
     
     func updateHeaders() {
         if let session: Session = authService.session {

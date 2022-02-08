@@ -38,12 +38,14 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.navigationController?.isNavigationBarHidden = true
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
-
+        
         coordinator.animate(alongsideTransition: { [unowned self] _ in
             if newCollection.verticalSizeClass == .compact {
                 collection.collectionViewLayout = LandscapeLayout()
@@ -103,7 +105,7 @@ class MainViewController: UIViewController {
         let buttonDelete = UIButton()
         buttonDelete.layer.cornerRadius = 10
         buttonDelete.layer.masksToBounds = true
-       
+        
         let scaleConfig = UIImage.SymbolConfiguration(scale: .small)
         let image = UIImage(systemName: "clear", withConfiguration: scaleConfig)?.withRenderingMode(.alwaysTemplate)
         buttonDelete.setBackgroundImage(image, for: .normal)
@@ -136,13 +138,18 @@ extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
+        if indexPath.item == self.viewModel.countItem - 5 {
+            self.viewModel.neadLoadMore()
+        }
+        
+        
         if isFiltering {
-            if indexPath.item == self.viewModel.countItem - 15 {
+            if indexPath.item == self.viewModel.countItem - 5 {
                 self.viewModel.searchListPhoto(search: self.textFild?.text ?? "")
             }
         } else {
-            if indexPath.item == self.viewModel.countItem - 15 {
-                self.viewModel.listPhoto()
+            if indexPath.item == self.viewModel.countItem - 5 {
+                self.viewModel.neadLoadMore()
             }
         }
     }
@@ -163,7 +170,8 @@ extension MainViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueCell(withType: MainCollectionViewCell.self, for: indexPath) as? MainCollectionViewCell else { return UICollectionViewCell() }
         
         let model = self.viewModel.itemForCollection(index: indexPath.item)
-        cell.configur(model: model.image)
+        cell.configur(model: model)
+        
         return cell
     }
 }

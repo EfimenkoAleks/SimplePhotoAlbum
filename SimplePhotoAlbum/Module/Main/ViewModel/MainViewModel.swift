@@ -10,16 +10,17 @@ import Foundation
 class MainViewModel {
     private var router: MainRouterProtocol
     weak var delegate: MainViewModelDelegate?
-    private var images: [ImageModel]
+    private var images: [URL]
     private var dataSource: [PhotoListRequest.PhotoListResponseItem]
-//    private let service: APIService
     private let imageService: ImageService
     private var numberPage: Int
     private var searchText: String
     private var fetcher: PhotoCollectGatewayProtocol
     
+    private let loadingQueue = OperationQueue()
+    private var loadingOperations: [IndexPath: DataLoadOperation] = [:]
+    
     init(router: MainRouterProtocol,
- //        service: APIService = DIContainer.default.apiService,
          imageService: ImageService = BaseFetcher.shared.imageService,
          fetcher: PhotoCollectGatewayProtocol = BaseFetcher.shared.photoService
     ) {
@@ -30,26 +31,46 @@ class MainViewModel {
         self.images = []
         self.dataSource = []
         self.imageService = imageService
- //       self.service = service
  //       self.preload()
         fetchData()
-        NotificationCenter.default.addObserver(self, selector: #selector(obdateDataSource), name: .kNeadUpdateCollection, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(obdateDataSource), name: .kNeadUpdateCollection, object: nil)
     }
     
 }
 
 extension MainViewModel: MainViewModelProtocol {
+    
     var countItem: Int {
-        return self.images.count
+        return self.dataSource.count
+    }
+    
+    func removeFromLoadingOperation(indexPath: IndexPath) {
+        loadingOperations.removeValue(forKey: indexPath)
+    }
+    
+    func addToLoadingOperation(insexPath: IndexPath, dataLoader: DataLoadOperation) {
+        loadingOperations[insexPath] = dataLoader
+    }
+    
+    func objectOperationByIndex(indexPath: IndexPath) -> DataLoadOperation? {
+        return loadingOperations[indexPath]
+    }
+    
+    func addOperationToLoadingQueue(dataLoader: DataLoadOperation) {
+        loadingQueue.addOperation(dataLoader)
+    }
+    
+    func fetchOnPhoto() {
+        
     }
     
     func itemForDidSelect(index: Int) -> URL? {
-       let url = self.images[index].url
+       let url = self.images[index]
         let sort = self.dataSource.filter({$0.urls?.small == url})
         return sort.first?.urls?.full
     }
     
-    func itemForCollection(index: Int) -> ImageModel {
+    func itemForCollection(index: Int) -> URL {
         return self.images[index]
     }
     
@@ -61,33 +82,82 @@ extension MainViewModel: MainViewModelProtocol {
     }
     
     private func fetchData() {
-        AppManager.shared.loadFirstData()
-    }
-    
-    @objc func obdateDataSource() {
         reloadDataSource()
-        dataSource = fetcher.photoList
-        
-        let urlsImage = dataSource.compactMap({$0.urls?.small})
-        let group = DispatchGroup()
-        
-        urlsImage.forEach { [weak self] (item) in
-            guard let self = self else { return }
-            group.enter()
-            self.imageService.downloadImage(item) { (result) in
-                guard let data = result else { return }
-                let image = ImageModel(url: item, image: data)
-                self.images.append(image)
-                group.leave()
+        numberPage += 1
+        fetcher.reload(with: numberPage) { [weak self] (state) in
+            if state == .loaded {
+                self?.ubdateDataSource()
             }
         }
-        group.notify(queue: .main) {
+   //     AppManager.shared.loadFirstData()
+    }
+    
+    private func ubdateDataSource() {
+   //     reloadDataSource()
+        dataSource = fetcher.photoList
+  //      self.delegate?.didFetchingData()
+        
+       
+        
+        let urlsImage = dataSource.compactMap({$0.urls?.small})
+        images = urlsImage
+//        let group = DispatchGroup()
+//
+//        urlsImage.forEach { [weak self] (item) in
+//            guard let self = self else { return }
+//            group.enter()
+//            self.imageService.downloadImage(item) { (result) in
+//                guard let data = result else { return }
+//                let image = ImageModel(url: item, image: data)
+//                self.images.append(image)
+//                group.leave()
+//            }
+//        }
+//        group.notify(queue: .main) {
             self.delegate?.didFetchingData()
-        }
+//        }
+    }
+    
+    func createLoadObject(at index: Int) -> DataLoadOperation? {
+      if (0..<dataSource.count).contains(index) {
+          let urlsImage = dataSource.compactMap({$0.urls?.small})
+          let imageModel = ImageModel(url: urlsImage[index])
+        return DataLoadOperation(imageModel)
+      }
+        return .none
     }
 
-    func listPhoto() {
-//        self.numberPage += 1
+    func neadLoadMore() {
+        numberPage += 1
+        
+        fetcher.reload(with: numberPage) { [weak self] (state) in
+            if state == .loaded {
+                if let list = self?.fetcher.photoList {
+                    self?.dataSource += list
+                    
+                    let urlsImage = list.compactMap({$0.urls?.small})
+                    self?.images += urlsImage
+//                    let group = DispatchGroup()
+//
+//                    urlsImage.forEach { [weak self] (item) in
+//                        guard let self = self else { return }
+//                        group.enter()
+//                        self.imageService.downloadImage(item) { (result) in
+//                            guard let data = result else { return }
+//                            let image = ImageModel(url: item, image: data)
+//                            self.images.append(image)
+//                            group.leave()
+//                        }
+//                    }
+//                    group.notify(queue: .main) {
+                        self?.delegate?.didFetchingData()
+//                    }
+                } else {
+                    self?.dataSource += []
+                    
+                }
+            }
+        }
 //
 //        self.service.getListPhoto(photo: self.numberPage) { [weak self] (respons) in
 //            guard let self = self else { return }

@@ -38,6 +38,7 @@ extension APIServiceImplementation: APIService {
         
         let url: String = "photos"
         var params: [String: String] = [:]
+        params["baseURL"] = AppConfig.baseURL
         params["client_id"] = AppConfig.token
         params["order_by"] = "ORDER"
         params["page"] = photo.description

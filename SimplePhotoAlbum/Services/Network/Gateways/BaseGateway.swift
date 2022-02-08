@@ -20,17 +20,22 @@ class BaseGateway {
 }
 
 extension BaseGateway: NetworkService {
-    
-    func reload(completionHandler: (ServiceState) -> Void) {}
-    
+  
     func GET(
         url: String,
         token: String?,
         params: [String: Any]?,
         completionHandler: @escaping (NetworkServiceResponse) -> Void
     ) {
+        guard let parametrs = params,
+              let baseUrl = parametrs["baseURL"] as? String,
+              let token = parametrs["client_id"] as? String,
+              let order = parametrs["order_by"] as? String,
+              let page = parametrs["page"] as? String,
+        let pageCount = parametrs["per_page"] as? String else { return }
+    
         
-        let afurl = AppConfig.baseURL + "photos?client_id=\(AppConfig.token)&order_by=ORDER&page=\(1)&per_page=30"
+        let afurl = baseUrl + url + "?client_id=" + token + "&order_by=" + order + "&page=" + page + "&per_page=" + pageCount
         AF.request(afurl)
             .validate()
             .responseDecodable(of: PhotoListRequest.PhotoListResponseItem.self) { (response) in

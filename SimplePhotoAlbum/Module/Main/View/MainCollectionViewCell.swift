@@ -9,9 +9,14 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
 
+    let imageService = BaseFetcher.shared.imageService
     @IBOutlet weak var imageImageView: UIImageView!
     
-    func configur(model: Data) {
-        self.imageImageView.image = UIImage(data: model)
+    func configur(model: URL) {
+
+        imageService.downloadImage(url: model) { image in
+            guard let image = image else { return }
+            self.imageImageView.image = UIImage(data: image)
+        }
     }
 }

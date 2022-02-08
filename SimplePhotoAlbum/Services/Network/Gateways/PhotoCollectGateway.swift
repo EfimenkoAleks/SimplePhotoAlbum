@@ -23,32 +23,31 @@ class PhotoCollectGateway {
         self.apiService = apiService
     }
     
-    private func load(completionHandler: @escaping (ServiceState) -> Void) {
+    private func load(page: Int, completionHandler: @escaping (ServiceState) -> Void) {
         guard self.state != .loading else { return }
         self.photoList = []
         self.state = .loading
         completionHandler(self.state)
-        self.apiService.getListPhoto(photo: 1) { [weak self] (result) in
-            guard let self = self else {
+        self.apiService.getListPhoto(photo: page) { [weak self] (result) in
+            guard let strongSelf = self else {
                 completionHandler(.error)
                 return
             }
             guard let list = try? result.get() else {
-                self.state = .error
-                completionHandler(self.state)
+                strongSelf.state = .error
+                completionHandler(strongSelf.state)
                 return
             }
             
-            self.photoList += list
-            self.state = .loaded
-            completionHandler(self.state)
+            strongSelf.photoList = list
+            strongSelf.state = .loaded
+            completionHandler(strongSelf.state)
         }
     }
 }
 
 extension PhotoCollectGateway: PhotoCollectGatewayProtocol {
-    func reload(completionHandler: @escaping (ServiceState) -> Void) {
-        self.load(completionHandler: completionHandler)
+    func reload(with hage: Int, completionHandler: @escaping (ServiceState) -> Void) {
+        self.load(page: hage, completionHandler: completionHandler)
     }
 }
-

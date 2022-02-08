@@ -23,7 +23,7 @@ class PhotoCollectSearchGateway {
         self.apiService = apiService
     }
     
-    private func load(completionHandler: @escaping (ServiceState) -> Void) {
+    private func load(page: String, completionHandler: @escaping (ServiceState) -> Void) {
         guard self.state != .loading else { return }
         self.photoSearchList = []
         self.state = .loading
@@ -47,8 +47,7 @@ class PhotoCollectSearchGateway {
 }
 
 extension PhotoCollectSearchGateway: PhotoCollectSearchGatewayProtocol {
-    func reload(completionHandler: @escaping (ServiceState) -> Void) {
-        self.load(completionHandler: completionHandler)
+    func reload(with hage: String, completionHandler: @escaping (ServiceState) -> Void) {
+        load(page: hage, completionHandler: completionHandler)
     }
 }
-

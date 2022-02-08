@@ -9,5 +9,5 @@ import Foundation
 
 struct ImageModel {
     var url: URL
-    var image: Data
+ //   var image: Data?
 }

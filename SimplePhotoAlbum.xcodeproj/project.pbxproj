@@ -51,6 +51,7 @@
 		CE15E40F26E3FA8C00ACA71B /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E40E26E3FA8C00ACA71B /* ImageModel.swift */; };
 		CE15E41B26E529E100ACA71B /* PortraitLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E41A26E529E100ACA71B /* PortraitLayout.swift */; };
 		CE15E41F26E52A2E00ACA71B /* LandscapeLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E41E26E52A2E00ACA71B /* LandscapeLayout.swift */; };
+		CE3CBA9727AD170A005B0EC7 /* DataLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CBA9627AD170A005B0EC7 /* DataLoadOperation.swift */; };
 		CE4B917127A1B5570017C3D7 /* TabBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B917027A1B5570017C3D7 /* TabBar+Extension.swift */; };
 		CE64D21627A2C9710038D9E9 /* MainDBStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE64D21527A2C9710038D9E9 /* MainDBStorage.swift */; };
 		CE75AD9027999FA8001DF339 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE93FD7F2790440900EEEAE2 /* DataModel.xcdatamodeld */; };
@@ -85,6 +86,7 @@
 		CE9CAF842795873400A4030A /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF832795873400A4030A /* Array+NSManagedObjectContext.swift */; };
 		CE9CAF862795884100A4030A /* DBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF852795884100A4030A /* DBStorageConfigurator.swift */; };
 		CE9CAF8827971D9800A4030A /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF8727971D9800A4030A /* DataFormatter.swift */; };
+		CEA492A727B2697400D0D3D7 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA492A627B2697400D0D3D7 /* String+MD5.swift */; };
 		CEB5E57F279AFAC600CBA27B /* GatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */; };
 		CEB5E581279B2C0200CBA27B /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E580279B2C0200CBA27B /* AppFlowController.swift */; };
 		CEC3E71C27A7E69A0001383F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC3E71B27A7E69A0001383F /* Response.swift */; };
@@ -130,6 +132,7 @@
 		CE15E40E26E3FA8C00ACA71B /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		CE15E41A26E529E100ACA71B /* PortraitLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitLayout.swift; sourceTree = "<group>"; };
 		CE15E41E26E52A2E00ACA71B /* LandscapeLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeLayout.swift; sourceTree = "<group>"; };
+		CE3CBA9627AD170A005B0EC7 /* DataLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadOperation.swift; sourceTree = "<group>"; };
 		CE4B917027A1B5570017C3D7 /* TabBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabBar+Extension.swift"; sourceTree = "<group>"; };
 		CE64D21527A2C9710038D9E9 /* MainDBStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDBStorage.swift; sourceTree = "<group>"; };
 		CE75AD912799A1E4001DF339 /* SUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUser.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		CE9CAF832795873400A4030A /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
 		CE9CAF852795884100A4030A /* DBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBStorageConfigurator.swift; sourceTree = "<group>"; };
 		CE9CAF8727971D9800A4030A /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
+		CEA492A627B2697400D0D3D7 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayConfigurator.swift; sourceTree = "<group>"; };
 		CEB5E580279B2C0200CBA27B /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		CEC3E71B27A7E69A0001383F /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				CE15E3B426DFD1B600ACA71B /* MainViewModel.swift */,
+				CE3CBA9627AD170A005B0EC7 /* DataLoadOperation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				CE4B917027A1B5570017C3D7 /* TabBar+Extension.swift */,
 				CE15E3BD26DFDC4200ACA71B /* Extension+CollectionViewCell.swift */,
 				CE08488327A3EE0B00FADD08 /* TabBarItem.swift */,
+				CEA492A627B2697400D0D3D7 /* String+MD5.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -667,6 +673,7 @@
 				CE93FD67278EE96700EEEAE2 /* SessionStorable.swift in Sources */,
 				CE9CAF862795884100A4030A /* DBStorageConfigurator.swift in Sources */,
 				CE15E3F926E1892A00ACA71B /* DetailWireFrame.swift in Sources */,
+				CE3CBA9727AD170A005B0EC7 /* DataLoadOperation.swift in Sources */,
 				CEB5E57F279AFAC600CBA27B /* GatewayConfigurator.swift in Sources */,
 				CEC3E71C27A7E69A0001383F /* Response.swift in Sources */,
 				CEF9EF6027AAB7FD00F24A9E /* PhotoCollectSearchGateway.swift in Sources */,
@@ -715,6 +722,7 @@
 				CE15E41B26E529E100ACA71B /* PortraitLayout.swift in Sources */,
 				CE93FD60278EDF4E00EEEAE2 /* AuthService.swift in Sources */,
 				CE15E3C326E017D500ACA71B /* DIContainer.swift in Sources */,
+				CEA492A727B2697400D0D3D7 /* String+MD5.swift in Sources */,
 				CE15E40126E18ACA00ACA71B /* DetailViewModel.swift in Sources */,
 				CE15E3F326E188FC00ACA71B /* DetailInterfaces.swift in Sources */,
 				CE966A3727A9690D0034A6E6 /* BaseGateway.swift in Sources */,
