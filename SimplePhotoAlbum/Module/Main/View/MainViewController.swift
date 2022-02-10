@@ -137,12 +137,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        if indexPath.item == self.viewModel.countItem - 5 {
-            self.viewModel.neadLoadMore()
-        }
-        
-        
+     
         if isFiltering {
             if indexPath.item == self.viewModel.countItem - 5 {
                 self.viewModel.searchListPhoto(search: self.textFild?.text ?? "")

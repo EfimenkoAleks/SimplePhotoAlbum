@@ -23,12 +23,12 @@ class PhotoCollectSearchGateway {
         self.apiService = apiService
     }
     
-    private func load(page: String, completionHandler: @escaping (ServiceState) -> Void) {
+    private func load(page: Int, search: String, completionHandler: @escaping (ServiceState) -> Void) {
         guard self.state != .loading else { return }
         self.photoSearchList = []
         self.state = .loading
         completionHandler(self.state)
-        self.apiService.searchListPhoto(photo: 1, search: "Apple") { [weak self] (result) in
+        self.apiService.searchListPhoto(photo: page, search: search) { [weak self] (result) in
             guard let self = self else {
                 completionHandler(.error)
                 return
@@ -47,7 +47,9 @@ class PhotoCollectSearchGateway {
 }
 
 extension PhotoCollectSearchGateway: PhotoCollectSearchGatewayProtocol {
-    func reload(with hage: String, completionHandler: @escaping (ServiceState) -> Void) {
-        load(page: hage, completionHandler: completionHandler)
+    func reload(with hage: Int, params: [String : Any]?, completionHandler: @escaping (ServiceState) -> Void) {
+        guard let parametrs = params else { return }
+        let search = parametrs["search"] as? String ?? ""
+        load(page: hage, search: search, completionHandler: completionHandler)
     }
 }

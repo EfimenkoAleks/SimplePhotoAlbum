@@ -19,11 +19,6 @@ protocol MainViewModelOutputProtocol: class {
     func routTodetail(model: URL?)
     func preload()
     func preloadSearch(search: String)
-    func removeFromLoadingOperation(indexPath: IndexPath)
-    func addToLoadingOperation(insexPath: IndexPath, dataLoader: DataLoadOperation)
-    func objectOperationByIndex(indexPath: IndexPath) -> DataLoadOperation?
-    func createLoadObject(at index: Int) -> DataLoadOperation?
-    func addOperationToLoadingQueue(dataLoader: DataLoadOperation)
 }
 
 protocol MainViewModelProtocol: MainViewModelInputProtocol, MainViewModelOutputProtocol {}

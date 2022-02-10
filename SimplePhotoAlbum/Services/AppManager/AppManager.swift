@@ -16,6 +16,7 @@ class AppManager {
     
     static let shared: AppManager = AppManager()
     
+    let appCoordinator: AppFlowController = AppFlowController()
     let authService: AuthService = AuthService(sessionStorage: SessionStorage(storage: Storage()))
     let appInfoService: AppInfoService = AppInfoService(appSettingsStorage: AppSettingsStorage(storage: Storage()))
     let userSettingsService: UserSettinsService = UserSettinsService(userSettingsStorage: UserSettingsStorage(storage: Storage()))
@@ -34,9 +35,9 @@ class AppManager {
     
     func updateRootVC(_ window: UIWindow?) {
         self.window = window
-        let viewController: AppFlowController = AppFlowController()
-        window?.rootViewController = viewController
-        viewController.setSelectedTab()
+     //   let viewController: AppFlowController = AppFlowController()
+        window?.rootViewController = appCoordinator
+        appCoordinator.setSelectedTab()
     }
     
 //    func loadFirstData() {

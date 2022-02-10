@@ -16,9 +16,9 @@ enum ServiceState {
 
 protocol Service: AnyObject {
     var state: ServiceState { get }
-    func reload(with hage: Int, completionHandler: @escaping (ServiceState) -> Void)
+    func reload(with hage: Int, params: [String: Any]?, completionHandler: @escaping (ServiceState) -> Void)
 }
-
-extension Service {
-    func reload(with hage: Int, completionHandler: @escaping (ServiceState) -> Void) {}
-}
+//
+//extension Service {
+//    func reload(with hage: Int, completionHandler: @escaping (ServiceState) -> Void) {}
+//}

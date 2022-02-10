@@ -7,23 +7,6 @@
 
 import Foundation
 
-struct NetworkServiceResponse {
-    let data: Data?
-    let error: Error?
-    let headers: [AnyHashable: Any]
-}
-
-struct InvalidTokenError: Codable {
-    let status: String
-    let reason: String
-    
-    func isInvalidToken() -> Bool {
-        return status == "failed"
-    }
-}
-
-extension InvalidTokenError: Equatable {}
-
 extension NetworkServiceResponse {
     
     func isInvalidToken() -> Bool {
@@ -76,12 +59,10 @@ extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
     }
 }
 
-protocol NetworkService: Service {
+protocol NetworkService {
 //    @discardableResult
     func GET(
-        url: String,
-        token: String?,
-        params: [String: Any]?,
+        params: [String: Any],
         completionHandler: @escaping (NetworkServiceResponse) -> Void
     )
     

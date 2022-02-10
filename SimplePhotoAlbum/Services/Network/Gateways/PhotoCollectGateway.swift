@@ -47,7 +47,7 @@ class PhotoCollectGateway {
 }
 
 extension PhotoCollectGateway: PhotoCollectGatewayProtocol {
-    func reload(with hage: Int, completionHandler: @escaping (ServiceState) -> Void) {
+    func reload(with hage: Int, params: [String : Any]?, completionHandler: @escaping (ServiceState) -> Void) {
         self.load(page: hage, completionHandler: completionHandler)
     }
 }

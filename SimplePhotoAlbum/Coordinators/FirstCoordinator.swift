@@ -24,7 +24,7 @@ class FirstCoordinator: Coordinator {
     
     func showDetailController(url: URL?) {
         let vc: DetailViewController = DetailWireFrame.create(model: url)
-        vc.firstCoordinator = self
+  //      vc.firstCoordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 }

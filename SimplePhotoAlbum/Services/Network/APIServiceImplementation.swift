@@ -18,6 +18,52 @@ class APIServiceImplementation {
         self.networkService = networkService
     }
     
+}
+
+extension APIServiceImplementation: APIService {
+    func getListPhoto(photo: Int, completionHandler: @escaping (Result<[PhotoListRequest.PhotoListResponseItem], Error>) -> Void) {
+        
+        var params: [String: String] = [:]
+        params["baseURL"] = AppConfig.baseURL
+        params["url"] = "photos"
+        params["client_id"] = "?client_id=" + AppConfig.token
+        params["order_by"] = "&order_by=ORDER"
+        params["page"] = "&page=" + photo.description
+        params["per_page"] = "&per_page=30"
+      
+        networkService.GET(params: params) { result in
+            if result.isInvalidToken() {
+                self.token = nil
+                self.delegate?.tokenIsInvalid()
+            }
+            
+            completionHandler(result.decode())
+        }
+    }
+    
+    func searchListPhoto(photo: Int, search: String, completionHandler: @escaping (Result<PhotoListSearchRequest.PhotoListSearchResponseItem, Error>) -> Void) {
+        
+        var params: [String: String] = [:]
+        params["baseURL"] = AppConfig.baseURL
+        params["url"] = "search/photos"
+        params["client_id"] = "?client_id=" + AppConfig.token
+        params["page"] = "&page=" + photo.description
+        params["query"] = "&query=" + search
+        params["per_page"] = "&per_page=30"
+        
+        networkService.GET(params: params) { result in
+            if result.isInvalidToken() {
+                self.token = nil
+                self.delegate?.tokenIsInvalid()
+            }
+            
+            completionHandler(result.decode())
+        }
+    }
+    
+    
+}
+
 //    fileprivate enum Endpoint {
 //        case feed(String, Int)
 //        case search(String, Int, String)
@@ -31,50 +77,6 @@ class APIServiceImplementation {
 //            }
 //        }
 //    }
-}
-
-extension APIServiceImplementation: APIService {
-    func getListPhoto(photo: Int, completionHandler: @escaping (Result<[PhotoListRequest.PhotoListResponseItem], Error>) -> Void) {
-        
-        let url: String = "photos"
-        var params: [String: String] = [:]
-        params["baseURL"] = AppConfig.baseURL
-        params["client_id"] = AppConfig.token
-        params["order_by"] = "ORDER"
-        params["page"] = photo.description
-        params["per_page"] = "30"
-      
-        networkService.GET(url: url, token: token, params: params) { result in
-            if result.isInvalidToken() {
-                self.token = nil
-                self.delegate?.tokenIsInvalid()
-            }
-            
-            completionHandler(result.decode())
-        }
-    }
-    
-    func searchListPhoto(photo: Int, search: String, completionHandler: @escaping (Result<PhotoListSearchRequest.PhotoListSearchResponseItem, Error>) -> Void) {
-        
-        let url: String = "search/photos"
-        let params: [String: String] = [
-            "page": photo.description,
-            "query": search,
-            "per_page": "30"
-        ]
-        
-        networkService.GET(url: url, token: token, params: params) { result in
-            if result.isInvalidToken() {
-                self.token = nil
-                self.delegate?.tokenIsInvalid()
-            }
-            
-            completionHandler(result.decode())
-        }
-    }
-    
-    
-}
 
 //extension APIServiceImplementation: APIService {
 //

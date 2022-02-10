@@ -11,7 +11,7 @@ class BaseFetcher {
     
     static let shared = BaseFetcher()
     
-    private lazy var baseGateway: NetworkService = BaseGateway()
+    private lazy var baseGateway = BaseGateway()
     lazy var apiService: APIService = APIServiceImplementation(networkService: baseGateway)
     lazy var imageService: ImageService = ImageServiceImplementation(session: URLSession.shared)
     
