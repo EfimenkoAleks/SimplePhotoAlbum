@@ -10,8 +10,8 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var viewModel: DetailViewModelProtocol!
-    weak var secondCoordinator: SecondCoordinator?
-//    weak var firstCoordinator: FirstCoordinator?
+    private weak var router: SecondViewControllerRoute?
+    private weak var backDelegate: SecondControllerDelegate?
     private var viewScroll: ImageScrollView?
     
     private let loadIndikator : UIActivityIndicatorView = {
@@ -22,10 +22,20 @@ class DetailViewController: UIViewController {
         
         return ind
     }()
-
+    
+    init(router: MainSecondCoordinator) {
+        self.router = router
+        backDelegate = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.castomBarBeckButton()
         self.setupLoadIndikator()
         self.viewModel.delegate = self
@@ -36,13 +46,17 @@ class DetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        backDelegate?.didTabBack()
+    }
+    
     private func castomBarBeckButton() {
         self.view.backgroundColor = .black
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         backButton.tintColor = .white
         self.navigationController?.navigationBar.topItem!.backBarButtonItem = backButton;
     }
-
+    
     private func setupLoadIndikator() {
         
         self.view.addSubview(loadIndikator)
@@ -70,11 +84,11 @@ class DetailViewController: UIViewController {
         self.addViewScroll()
         guard let image = UIImage(data: image) else { return }
         self.viewScroll?.set(image: image)
-       
-            self.loadIndikator.stopAnimating()
-            self.loadIndikator.removeFromSuperview()
+        
+        self.loadIndikator.stopAnimating()
+        self.loadIndikator.removeFromSuperview()
     }
-
+    
 }
 
 extension DetailViewController: DetailViewModelDelegate {

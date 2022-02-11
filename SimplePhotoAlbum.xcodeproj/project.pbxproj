@@ -23,8 +23,6 @@
 /* Begin PBXBuildFile section */
 		CE08488427A3EE0C00FADD08 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08488327A3EE0B00FADD08 /* TabBarItem.swift */; };
 		CE08488727A41B4E00FADD08 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08488627A41B4E00FADD08 /* Coordinator.swift */; };
-		CE08488A27A41DD800FADD08 /* FirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08488927A41DD800FADD08 /* FirstCoordinator.swift */; };
-		CE08488C27A6E30C00FADD08 /* SecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08488B27A6E30C00FADD08 /* SecondCoordinator.swift */; };
 		CE15E38926DFCEF300ACA71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15E38826DFCEF300ACA71B /* AppDelegate.swift */; };
 		CE15E39226DFCEF500ACA71B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE15E39126DFCEF500ACA71B /* Assets.xcassets */; };
 		CE15E39526DFCEF500ACA71B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE15E39326DFCEF500ACA71B /* LaunchScreen.storyboard */; };
@@ -83,11 +81,19 @@
 		CE9CAF842795873400A4030A /* Array+NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF832795873400A4030A /* Array+NSManagedObjectContext.swift */; };
 		CE9CAF862795884100A4030A /* DBStorageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF852795884100A4030A /* DBStorageConfigurator.swift */; };
 		CE9CAF8827971D9800A4030A /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CAF8727971D9800A4030A /* DataFormatter.swift */; };
+		CE9CE6CB27B6C6010040078F /* SecondControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9CE6CA27B6C6010040078F /* SecondControllerDelegate.swift */; };
 		CEA492A727B2697400D0D3D7 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA492A627B2697400D0D3D7 /* String+MD5.swift */; };
 		CEA492AD27B42BA800D0D3D7 /* NetworkServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA492AC27B42BA800D0D3D7 /* NetworkServiceResponse.swift */; };
 		CEA492B127B42C1A00D0D3D7 /* InvalidTokenError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA492B027B42C1A00D0D3D7 /* InvalidTokenError.swift */; };
 		CEB5E57F279AFAC600CBA27B /* GatewayConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */; };
 		CEB5E581279B2C0200CBA27B /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB5E580279B2C0200CBA27B /* AppFlowController.swift */; };
+		CEF6F20827B52E1E00C2C3A6 /* CoordinatorDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F20727B52E1E00C2C3A6 /* CoordinatorDependencies.swift */; };
+		CEF6F20A27B52EB600C2C3A6 /* DefaultCoordinatorDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F20927B52EB600C2C3A6 /* DefaultCoordinatorDependencies.swift */; };
+		CEF6F20C27B5333100C2C3A6 /* FirstViewControllerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F20B27B5333100C2C3A6 /* FirstViewControllerRoute.swift */; };
+		CEF6F20E27B5377700C2C3A6 /* CoordinatorFlowListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F20D27B5377700C2C3A6 /* CoordinatorFlowListener.swift */; };
+		CEF6F21027B5391C00C2C3A6 /* MainFirstCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F20F27B5391C00C2C3A6 /* MainFirstCoordinator.swift */; };
+		CEF6F21427B569D000C2C3A6 /* MainSecondCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F21327B569D000C2C3A6 /* MainSecondCoordinator.swift */; };
+		CEF6F21627B56AFF00C2C3A6 /* SecondViewControllerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF6F21527B56AFF00C2C3A6 /* SecondViewControllerRoute.swift */; };
 		CEF9EF5C27AAAA5700F24A9E /* PhotoListSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EF5B27AAAA5700F24A9E /* PhotoListSearchRequest.swift */; };
 		CEF9EF6027AAB7FD00F24A9E /* PhotoCollectSearchGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9EF5F27AAB7FD00F24A9E /* PhotoCollectSearchGateway.swift */; };
 		E47A90ACE498EDAA34180FE9 /* Pods_SimplePhotoAlbum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AA9AFD66E4AEE45391C9F7 /* Pods_SimplePhotoAlbum.framework */; };
@@ -99,8 +105,6 @@
 		ADCEB59FBCFCF7896CB1E935 /* Pods-SimplePhotoAlbum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePhotoAlbum.debug.xcconfig"; path = "Target Support Files/Pods-SimplePhotoAlbum/Pods-SimplePhotoAlbum.debug.xcconfig"; sourceTree = "<group>"; };
 		CE08488327A3EE0B00FADD08 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		CE08488627A41B4E00FADD08 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		CE08488927A41DD800FADD08 /* FirstCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCoordinator.swift; sourceTree = "<group>"; };
-		CE08488B27A6E30C00FADD08 /* SecondCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCoordinator.swift; sourceTree = "<group>"; };
 		CE15E38526DFCEF300ACA71B /* SimplePhotoAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePhotoAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE15E38826DFCEF300ACA71B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE15E39126DFCEF500ACA71B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,11 +165,19 @@
 		CE9CAF832795873400A4030A /* Array+NSManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+NSManagedObjectContext.swift"; sourceTree = "<group>"; };
 		CE9CAF852795884100A4030A /* DBStorageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBStorageConfigurator.swift; sourceTree = "<group>"; };
 		CE9CAF8727971D9800A4030A /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
+		CE9CE6CA27B6C6010040078F /* SecondControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondControllerDelegate.swift; sourceTree = "<group>"; };
 		CEA492A627B2697400D0D3D7 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		CEA492AC27B42BA800D0D3D7 /* NetworkServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceResponse.swift; sourceTree = "<group>"; };
 		CEA492B027B42C1A00D0D3D7 /* InvalidTokenError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidTokenError.swift; sourceTree = "<group>"; };
 		CEB5E57E279AFAC600CBA27B /* GatewayConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayConfigurator.swift; sourceTree = "<group>"; };
 		CEB5E580279B2C0200CBA27B /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
+		CEF6F20727B52E1E00C2C3A6 /* CoordinatorDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDependencies.swift; sourceTree = "<group>"; };
+		CEF6F20927B52EB600C2C3A6 /* DefaultCoordinatorDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoordinatorDependencies.swift; sourceTree = "<group>"; };
+		CEF6F20B27B5333100C2C3A6 /* FirstViewControllerRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewControllerRoute.swift; sourceTree = "<group>"; };
+		CEF6F20D27B5377700C2C3A6 /* CoordinatorFlowListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFlowListener.swift; sourceTree = "<group>"; };
+		CEF6F20F27B5391C00C2C3A6 /* MainFirstCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFirstCoordinator.swift; sourceTree = "<group>"; };
+		CEF6F21327B569D000C2C3A6 /* MainSecondCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSecondCoordinator.swift; sourceTree = "<group>"; };
+		CEF6F21527B56AFF00C2C3A6 /* SecondViewControllerRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControllerRoute.swift; sourceTree = "<group>"; };
 		CEF9EF5B27AAAA5700F24A9E /* PhotoListSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListSearchRequest.swift; sourceTree = "<group>"; };
 		CEF9EF5F27AAB7FD00F24A9E /* PhotoCollectSearchGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectSearchGateway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,9 +214,12 @@
 		CE08488827A41D7F00FADD08 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				CEF6F21227B5577D00C2C3A6 /* SecondController */,
+				CEF6F21127B556AA00C2C3A6 /* FirstCoordinator */,
 				CE08488627A41B4E00FADD08 /* Coordinator.swift */,
-				CE08488927A41DD800FADD08 /* FirstCoordinator.swift */,
-				CE08488B27A6E30C00FADD08 /* SecondCoordinator.swift */,
+				CEF6F20727B52E1E00C2C3A6 /* CoordinatorDependencies.swift */,
+				CEF6F20927B52EB600C2C3A6 /* DefaultCoordinatorDependencies.swift */,
+				CEF6F20D27B5377700C2C3A6 /* CoordinatorFlowListener.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -510,6 +525,25 @@
 			path = Gateways;
 			sourceTree = "<group>";
 		};
+		CEF6F21127B556AA00C2C3A6 /* FirstCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CEF6F20F27B5391C00C2C3A6 /* MainFirstCoordinator.swift */,
+				CEF6F20B27B5333100C2C3A6 /* FirstViewControllerRoute.swift */,
+			);
+			path = FirstCoordinator;
+			sourceTree = "<group>";
+		};
+		CEF6F21227B5577D00C2C3A6 /* SecondController */ = {
+			isa = PBXGroup;
+			children = (
+				CEF6F21327B569D000C2C3A6 /* MainSecondCoordinator.swift */,
+				CEF6F21527B56AFF00C2C3A6 /* SecondViewControllerRoute.swift */,
+				CE9CE6CA27B6C6010040078F /* SecondControllerDelegate.swift */,
+			);
+			path = SecondController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -662,8 +696,9 @@
 				CEF9EF6027AAB7FD00F24A9E /* PhotoCollectSearchGateway.swift in Sources */,
 				CE93FD6F278EF96100EEEAE2 /* SessionStorage.swift in Sources */,
 				CE15E3AD26DFD07700ACA71B /* MainWireFrame.swift in Sources */,
-				CE08488A27A41DD800FADD08 /* FirstCoordinator.swift in Sources */,
+				CEF6F21627B56AFF00C2C3A6 /* SecondViewControllerRoute.swift in Sources */,
 				CE15E40F26E3FA8C00ACA71B /* ImageModel.swift in Sources */,
+				CEF6F21027B5391C00C2C3A6 /* MainFirstCoordinator.swift in Sources */,
 				CE15E3CA26E018EC00ACA71B /* ImageServiceImplementation.swift in Sources */,
 				CE15E3C726E0188C00ACA71B /* ImageService.swift in Sources */,
 				CE966A3D27A9BCF90034A6E6 /* PhotoListRequest.swift in Sources */,
@@ -672,7 +707,7 @@
 				CE15E38926DFCEF300ACA71B /* AppDelegate.swift in Sources */,
 				CE75AD942799A21A001DF339 /* _SUser.swift in Sources */,
 				CE15E3BE26DFDC4200ACA71B /* Extension+CollectionViewCell.swift in Sources */,
-				CE08488C27A6E30C00FADD08 /* SecondCoordinator.swift in Sources */,
+				CEF6F20C27B5333100C2C3A6 /* FirstViewControllerRoute.swift in Sources */,
 				CEF9EF5C27AAAA5700F24A9E /* PhotoListSearchRequest.swift in Sources */,
 				CE08488427A3EE0C00FADD08 /* TabBarItem.swift in Sources */,
 				CE93FD77278F2EE500EEEAE2 /* UserSettingsStorable.swift in Sources */,
@@ -692,8 +727,10 @@
 				CEB5E581279B2C0200CBA27B /* AppFlowController.swift in Sources */,
 				CE15E3E026E0E11600ACA71B /* APIServiceImplementation.swift in Sources */,
 				CE93FD73278EFB9700EEEAE2 /* AppSettingsStorable.swift in Sources */,
+				CEF6F21427B569D000C2C3A6 /* MainSecondCoordinator.swift in Sources */,
 				CE9CAF812795850A00A4030A /* DBStorage.swift in Sources */,
 				CE15E3B126DFD14100ACA71B /* MainViewController.swift in Sources */,
+				CEF6F20A27B52EB600C2C3A6 /* DefaultCoordinatorDependencies.swift in Sources */,
 				CE15E41F26E52A2E00ACA71B /* LandscapeLayout.swift in Sources */,
 				CE966A3127A95CA90034A6E6 /* BaseFetcher.swift in Sources */,
 				CE4B917127A1B5570017C3D7 /* TabBar+Extension.swift in Sources */,
@@ -703,14 +740,17 @@
 				CE15E41B26E529E100ACA71B /* PortraitLayout.swift in Sources */,
 				CE93FD60278EDF4E00EEEAE2 /* AuthService.swift in Sources */,
 				CEA492A727B2697400D0D3D7 /* String+MD5.swift in Sources */,
+				CEF6F20E27B5377700C2C3A6 /* CoordinatorFlowListener.swift in Sources */,
 				CE15E40126E18ACA00ACA71B /* DetailViewModel.swift in Sources */,
 				CE15E3F326E188FC00ACA71B /* DetailInterfaces.swift in Sources */,
 				CE966A3727A9690D0034A6E6 /* BaseGateway.swift in Sources */,
 				CE9CAF8827971D9800A4030A /* DataFormatter.swift in Sources */,
+				CE9CE6CB27B6C6010040078F /* SecondControllerDelegate.swift in Sources */,
 				CE966A3327A965FC0034A6E6 /* NetWorkService.swift in Sources */,
 				CE15E3B526DFD1B600ACA71B /* MainViewModel.swift in Sources */,
 				CE93FD6B278EF50400EEEAE2 /* Storage.swift in Sources */,
 				CE93FD7B278F30FA00EEEAE2 /* UserSettingsStorage.swift in Sources */,
+				CEF6F20827B52E1E00C2C3A6 /* CoordinatorDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,8 @@
 import UIKit
 
 protocol Coordinator {
-//    var cildCoordinators: [Coordinator] { get set }
-    var navigationController: UINavigationController { get set }
     
-    func start(_ item: UITabBarItem)
+    func add(dependencies coordinator: Coordinator)
+    func remove(dependencies coordinator: Coordinator)
+    func start()
 }

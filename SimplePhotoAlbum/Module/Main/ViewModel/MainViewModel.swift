@@ -8,7 +8,7 @@
 import Foundation
 
 class MainViewModel {
-    private var router: MainRouterProtocol
+//    private var router: MainRouterProtocol
     weak var delegate: MainViewModelDelegate?
     private var images: [URL]
     private var dataSource: [PhotoListRequest.PhotoListResponseItem]
@@ -17,12 +17,12 @@ class MainViewModel {
     private var searchText: String
     private var fetcher: PhotoCollectGatewayProtocol
     
-    init(router: MainRouterProtocol,
+    init(
          imageService: ImageService = BaseFetcher.shared.imageService,
          fetcher: PhotoCollectGatewayProtocol = BaseFetcher.shared.photoService
     ) {
         self.fetcher = fetcher
-        self.router = router
+  //      self.router = router
         self.numberPage = 0
         self.searchText = ""
         self.images = []

@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     var viewModel: MainViewModelProtocol!
-    weak var firstCoordinator: FirstCoordinator?
+    weak var router: FirstViewControllerRoute?
     
     private var isFiltering: Bool = false
     private var textFild: UITextField?
@@ -27,6 +27,17 @@ class MainViewController: UIViewController {
             collection.delegate = self
             collection.dataSource = self
         }
+    }
+    
+    init(router: FirstViewControllerRoute) {
+        
+        self.router = router
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -137,7 +148,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-     
+        
         if isFiltering {
             if indexPath.item == self.viewModel.countItem - 5 {
                 self.viewModel.searchListPhoto(search: self.textFild?.text ?? "")
@@ -151,7 +162,8 @@ extension MainViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let model = self.viewModel.itemForDidSelect(index: indexPath.item)
-        firstCoordinator?.showDetailController(url: model)
+        guard let url = model else { return }
+        router?.showDetailController(url: url)
     }
 }
 

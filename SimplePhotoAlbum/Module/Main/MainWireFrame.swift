@@ -8,11 +8,10 @@
 import UIKit
 
 class MainWireFrame {
-    static func create() -> MainViewController {
-        let view = MainViewController()
-        let router = MainRouter()
-        let viewModel = MainViewModel(router: router)
-        router.controller = view
+    static func create(router: FirstViewControllerRoute) -> MainViewController {
+        
+        let view = MainViewController(router: router)
+        let viewModel = MainViewModel()
         view.viewModel = viewModel
         
         return view
